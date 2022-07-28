@@ -60,6 +60,7 @@ echo "Run Helm Charts"
 echo "***********************"
 
 helm repo add helm-staging https://pureengage.jfrog.io/artifactory/helm-staging  --username mcooke --password AKCp8jQnGCXMaP3d7QzyDtBT3yJVXHnAmX8bPszPL8mfs9Kod6jgtY46tbN5qnYK8N5N1LeUB
+helm repo update 
 
 cd "./services/$SERVICE"
 COMMAND=$(echo $FULLCOMMAND | cut -d' ' -f1)
