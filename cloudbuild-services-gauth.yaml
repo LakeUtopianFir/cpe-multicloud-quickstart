@@ -3,6 +3,7 @@ steps:
   name: 'gcr.io/gcpe0003/privateedition'
   entrypoint: 'bash'
   args: ['services/provision-gauth.sh']
+  secretEnv: ['PULLSECRET']
   env:
     - 'VDOMAIN=${_VDOMAIN}'
     - 'VGCPPROJECT=${_VGCPPROJECT}'
@@ -13,3 +14,7 @@ steps:
     - 'VARTIFACTREPO=${_VARTIFACTREPO}'
   timeout: '3600s'
 timeout: '3600s'
+availableSecrets:
+  secretManager:
+  - versionName: "projects/402866575973/secrets/PULLSECRET"
+    env: 'PULLSECRET'

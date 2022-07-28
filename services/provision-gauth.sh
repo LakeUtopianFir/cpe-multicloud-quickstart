@@ -10,6 +10,7 @@ export DOMAIN=$VDOMAIN
 export IMAGE_REGISTRY=$VIMAGEREGISTRY
 export ARTIFACT_REPO=$VARTIFACTREPO
 export FULLCOMMAND=$VHELMCOMMAND
+export pullsecret=$PULLSECRET
 
 echo "***********************"
 echo "Logging into GCP"
@@ -31,6 +32,23 @@ else
     echo "Namespace $NS already exists. Will use it."
 fi
 kubectl config set-context --current --namespace=$NS
+
+echo "********************"
+echo "Creating Pull Secret"
+echo "********************"
+cat <<EOF | kubectl create -n $NS -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pullsecret
+  namespace: $NS
+data:
+  .dockerconfigjson: >-
+     $pullsecret
+type: kubernetes.io/dockerconfigjson
+EOF
+
+echo $(kubectl get secrets pullsecret -n $NS)
 
 echo "***********************"
 echo "Creating JKS Keystore"
