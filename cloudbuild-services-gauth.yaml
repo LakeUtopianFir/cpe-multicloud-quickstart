@@ -18,3 +18,5 @@ availableSecrets:
   secretManager:
   - versionName: "projects/402866575973/secrets/PULLSECRET"
     env: 'PULLSECRET'
+options:
+  logging: CLOUD_LOGGING_ONLY
