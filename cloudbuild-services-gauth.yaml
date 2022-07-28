@@ -16,7 +16,7 @@ steps:
 timeout: '3600s'
 availableSecrets:
   secretManager:
-  - versionName: "projects/402866575973/secrets/PULLSECRET"
+  - versionName: "projects/402866575973/secrets/PULLSECRET/versions/1"
     env: 'PULLSECRET'
 options:
   logging: CLOUD_LOGGING_ONLY
