@@ -1,6 +1,6 @@
 steps:
 - id: 'Provision Infra Components'
-  name: 'gcr.io/gts-multicloud-pe-dev/privateedition'
+  name: 'gcr.io/gcpe0003/privateedition'
   entrypoint: 'bash'
   args: ['services/provision-infra.sh']
   env:
