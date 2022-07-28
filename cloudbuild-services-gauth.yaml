@@ -11,10 +11,5 @@ steps:
     - 'VHELMCOMMAND=${_VHELMCOMMAND}'
     - 'VIMAGEREGISTRY=${_VIMAGEREGISTRY}'
     - 'VARTIFACTREPO=${_VARTIFACTREPO}'
-  secretEnv: ['PULLSECRET']
   timeout: '3600s'
 timeout: '3600s'
-availableSecrets:
-   secretManager:
-   - versionName: projects/402866575973/secrets/PULLSECRET
-     env: 'PULLSECRET'
