@@ -11,6 +11,8 @@ export IMAGE_REGISTRY=$VIMAGEREGISTRY
 export ARTIFACT_REPO=$VARTIFACTREPO
 export FULLCOMMAND=$VHELMCOMMAND
 export pullsecret=$PULLSECRET
+export JFROGUSR=$JFROGUSR
+export JFROGPASS=$JFROGPASS
 
 echo "***********************"
 echo "Logging into GCP"
@@ -77,7 +79,7 @@ echo "***********************"
 echo "Run Helm Charts"
 echo "***********************"
 
-helm repo add helm-staging https://pureengage.jfrog.io/artifactory/helm-staging  --username mcooke --password AKCp8jQnGCXMaP3d7QzyDtBT3yJVXHnAmX8bPszPL8mfs9Kod6jgtY46tbN5qnYK8N5N1LeUB
+helm repo add helm-staging https://pureengage.jfrog.io/artifactory/helm-staging  --username $JFROGUSR --password $JFROGPASS
 helm repo update 
 
 cd "./services/$SERVICE"
