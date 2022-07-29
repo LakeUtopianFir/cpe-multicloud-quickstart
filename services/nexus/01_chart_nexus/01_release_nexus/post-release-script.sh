@@ -11,7 +11,7 @@ UCSX_NAMESPACE=ucsx
 platform="Azure"
 location=${tenant_primary_location:-"USW1"}
 locations=${tenant_locations:-"westus2"}
-tenant_dep_version="9.0.000.01.0000" # prototype version - to be replaced to latest once released
+tenant_dep_version="100.0.122.2868" # prototype version - to be replaced to latest once released
 
 #############################################################################
 # Helper functions

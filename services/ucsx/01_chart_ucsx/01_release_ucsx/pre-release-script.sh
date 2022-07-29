@@ -32,6 +32,9 @@ export POSTGRES_PASSWORD=$( get_secret POSTGRES_PASSWORD )
 export ucsx_gauth_client_id=$( get_secret ucsx_gauth_client_id )
 export ucsx_gauth_client_secret=$( get_secret ucsx_gauth_client_secret )
 ###############################################################################
+# 					Elasticsearch URL
+###############################################################################
+export ES_ADDR=$( get_secret ES_ADDR)
 
 # For validation process need to evaluate release override values here
 replace_overrides POSTGRES_ADDR 				$POSTGRES_ADDR
@@ -40,6 +43,7 @@ replace_overrides ucsx_gauth_client_id 			$ucsx_gauth_client_id
 replace_overrides ucsx_gauth_client_secret 		$ucsx_gauth_client_secret
 replace_overrides POSTGRES_USER 			$POSTGRES_USER
 replace_overrides POSTGRES_PASSWORD 		$POSTGRES_PASSWORD
+replace_overrides ES_ADDR					$ES_ADDR
 
 ###############################################################################
 # Creating UCSX DB if not exist and init

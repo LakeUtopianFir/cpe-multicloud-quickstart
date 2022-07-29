@@ -35,19 +35,7 @@ kubectl config set-context --current --namespace=$NS
 echo "***********************"
 echo "Creating K8 Secrets"
 echo "***********************"
-DNSSECRET=$(kubectl get -n kube-system svc kube-dns -o custom-columns=:spec.clusterIP --no-headers)
-sed -i "s|INSERT_DNS|$DNSSECRET|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
-
-CONSULSECRET=$(kubectl get -n consul secrets consul-bootstrap-acl-token -o jsonpath='{.data.token}' | base64 --decode)
-sed -i "s|INSERT_CONSUL_TOKEN|$CONSULSECRET|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
-
-REDISIP=$(kubectl get svc infra-redis-redis-cluster -n infra -o jsonpath="{.spec.clusterIP}")
-sed -i "s|INSERT_REDIS_IP|$REDISIP|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
-
-REDISPASSWORD=$(kubectl get -n infra secrets infra-redis-redis-cluster -o jsonpath='{.data.redis-password}' | base64 --decode)
-sed -i "s|INSERT_REDIS_PASSWORD|$REDISPASSWORD|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
-
-POSTGRESPASSWORD=$(kubectl get secret --namespace infra pgdb-std-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
+POSTGRESPASSWORD=$(kubectl get secret --namespace infra pgdb-rpthist-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
 sed -i "s|INSERT_POSTGRES_PASSWORD|$POSTGRESPASSWORD|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
 
 cat "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"

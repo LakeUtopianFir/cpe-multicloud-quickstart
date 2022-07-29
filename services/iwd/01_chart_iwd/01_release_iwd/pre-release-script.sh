@@ -53,6 +53,10 @@ export iwd_gws_api_key=$( get_secret iwd_gws_api_key )
 export iwd_nexus_api_key=$( get_secret iwd_nexus_api_key )
 export iwd_tenant_api_key=$( get_secret iwd_tenant_api_key )
 ###############################################################################
+# 			ElasticSearch
+###############################################################################
+export ES_ADDR=$( get_secret ES_ADDR )
+###############################################################################
 # 			Generated new apikeys for tenant and iwddm:
 #
 # echo  "$(uuidgen)" | tr '[:upper:]' '[:lower:]')
@@ -69,6 +73,7 @@ replace_overrides iwd_redis_password 		$iwd_redis_password
 replace_overrides iwd_gws_api_key 			$iwd_gws_api_key
 replace_overrides iwd_nexus_api_key 		$iwd_nexus_api_key
 replace_overrides iwd_tenant_api_key 		$iwd_tenant_api_key
+replace_overrides ES_ADDR               $ES_ADDR
 
 ##############################################################################
 # Creating IWD DB if not exist and init

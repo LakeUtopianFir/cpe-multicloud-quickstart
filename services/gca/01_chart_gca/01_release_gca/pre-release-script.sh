@@ -21,8 +21,8 @@ function replace_overrides {
 ###############################################################################
 #       Tenant id (UUID) and sid from GIM deployment secrets
 ###############################################################################
-export tenant_sid=$( get_secret tenant_sid )
-export tenant_id=$( get_secret tenant_id )
+export tenant_sid=$( get_secret tenant_sid gim)
+export tenant_id=$( get_secret tenant_id gim)
 ###############################################################################
 #       GIM database parameters from GIM deployment secrets
 ###############################################################################
@@ -37,6 +37,10 @@ export POSTGRES_ADDR_TENANT=$( get_secret POSTGRES_ADDR voice )
 export tenant_pg_db_name=$( get_secret tenant_t${tenant_sid}_pg_db_name voice )
 export tenant_pg_db_user=$( get_secret tenant_t${tenant_sid}_pg_db_user voice )
 export tenant_pg_db_password=$( get_secret tenant_t${tenant_sid}_pg_db_password voice )
+
+echo $tenant_pg_db_name
+echo $tenant_pg_db_user
+echo $tenant_pg_db_password
 ###############################################################################
 #      Object bucket credentials from GSP secrets (gim secrets)
 ###############################################################################
@@ -48,7 +52,7 @@ export BUCKET_PORT=$( get_secret BUCKET_PORT gsp)
 ###############################################################################
 #      kafka host
 ###############################################################################
-export KAFKA_ADDR=$( get_secret KAFKA_ADDR )
+export KAFKA_ADDR=$( get_secret KAFKA_ADDR gsp)
 ###############################################################################
 
 # For validation process need to evaluate release override values here

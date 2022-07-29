@@ -25,7 +25,7 @@ job:
     loggers:
       org.apache.kafka: INFO
 monitoring:
-  enabled: true
+  enabled: false
   port: 9249
   dashboards:
     targetDirectory: /var/lib/grafana/dashboards/{{ .Release.Namespace }}

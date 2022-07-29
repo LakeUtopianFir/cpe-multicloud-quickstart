@@ -14,3 +14,6 @@ db:
   name: DB_NAME_UCSX
   port: "5432"
   ssl: "false"
+
+elasticsearch:
+  url: http://ES_ADDR:9200
