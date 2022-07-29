@@ -28,6 +28,7 @@ export gauth_gws_client_secret=$gauth_gws_client_secret
 export gauth_jks_keyPassword=$gauth_jks_keyPassword
 export gauth_jks_keyStorePassword=$gauth_jks_keyStorePassword
 export LOCATION=$LOCATION
+export JKS_KEY_CONTENT=$JKS_KEY_CONTENT
 
 echo "***********************"
 echo "Logging into GCP"
@@ -67,15 +68,15 @@ EOF
 
 echo $(kubectl get secrets pullsecret -n $NS)
 
-echo "***********************"
-echo "Creating JKS Keystore"
-echo "***********************"
-keytool -keystore jksStorage.jks -genkey -noprompt -alias gws-auth-key -dname "CN=$DOMAIN, O=Genesys, L=Indianapolis, S=Indiana, C=US" -storepass Genesys1234 -keypass Genesys1234 -keyalg RSA
-JKSBASE64=$(cat ./jksStorage.jks | base64 -w 0)
-sed -i "s#JKS_KEY_CONTENT#$JKSBASE64#g" "./services/$SERVICE/01_chart_gauth/override_values.yaml"
-sed -i "s#JKS_KEY_CONTENT#$JKSBASE64#g" "./services/$SERVICE/01_chart_gauth/01_release_gauth/override_values.yaml"
-echo $JKSBASE64
-cat "./services/$SERVICE/01_chart_gauth/override_values.yaml"
+##echo "***********************"
+#echo "Creating JKS Keystore"
+#echo "***********************"
+#keytool -keystore jksStorage.jks -genkey -noprompt -alias gws-auth-key -dname "CN=$DOMAIN, O=Genesys, L=Indianapolis, S=Indiana, C=US" -storepass Genesys1234 -keypass Genesys1234 -keyalg RSA
+#JKSBASE64=$(cat ./jksStorage.jks | base64 -w 0)
+#sed -i "s#JKS_KEY_CONTENT#$JKSBASE64#g" "./services/$SERVICE/01_chart_gauth/override_values.yaml"
+#sed -i "s#JKS_KEY_CONTENT#$JKSBASE64#g" "./services/$SERVICE/01_chart_gauth/01_release_gauth/override_values.yaml"
+#echo $JKSBASE64
+#cat "./services/$SERVICE/01_chart_gauth/override_values.yaml"
 
 echo "***********************"
 echo "Creating K8 Secrets"

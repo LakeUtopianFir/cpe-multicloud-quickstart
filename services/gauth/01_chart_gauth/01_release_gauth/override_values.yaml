@@ -20,7 +20,7 @@ redis:
   password: $gauth_redis_password
 
 services:
-  location: global_location
+  location: $LOCATION
   secret:
     admin_username: $gauth_admin_username
     admin_password: $gauth_admin_password

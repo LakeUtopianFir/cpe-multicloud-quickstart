@@ -3,7 +3,7 @@ steps:
   name: 'gcr.io/gcpe0003/privateedition'
   entrypoint: 'bash'
   args: ['services/provision-gauth.sh']
-  secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR','DB_NAME','gauth_admin_password','gauth_admin_password_plain','gauth_admin_username','gauth_gws_client_id','gauth_gws_client_secret',
+  secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR','DB_NAME','gauth_admin_password','gauth_admin_password_plain','gauth_admin_username','gauth_gws_client_id','gauth_gws_client_secret','JKS_KEY_CONTENT',
               'gauth_jks_keyPassword','gauth_jks_keyStorePassword','gauth_pg_password','gauth_pg_username','gauth_redis_password','LOCATION','POSTGRES_ADDR','POSTGRES_PASSWORD','POSTGRES_USER']
   env:
     - 'VDOMAIN=${_VDOMAIN}'
@@ -53,6 +53,8 @@ availableSecrets:
     env:  "POSTGRES_PASSWORD"
   - versionName: "projects/402866575973/secrets/POSTGRES_USER/versions/1"
     env:  "POSTGRES_USER"                                        
+  - versionName: "projects/402866575973/secrets/JKS_KEY_CONTENT/versions/1"
+    env: "JKS_KEY_CONTENT"
 options:
   logging: CLOUD_LOGGING_ONLY
   #Jira-CPE-4863 

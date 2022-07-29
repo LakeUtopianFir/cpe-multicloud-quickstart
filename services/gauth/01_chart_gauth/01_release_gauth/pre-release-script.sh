@@ -72,6 +72,7 @@ export gauth_gws_client_secret=${gauth_gws_client_secret}
 export gauth_jks_keyPassword=${gauth_jks_keyPassword}
 export gauth_jks_keyStorePassword=${gauth_jks_keyStorePassword}
 export LOCATION=${LOCATION}
+export JKS_KEY_CONTENT=${JKS_KEY_CONTENT}
 
 
 # For validation process need to evaluate release override values here
