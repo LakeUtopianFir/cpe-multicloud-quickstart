@@ -57,6 +57,22 @@
 ################################################################################
 #export global_location=$( get_secret LOCATION )
 ################################################################################
+export POSTGRES_ADDR=$POSTGRES_ADDR        
+export POSTGRES_USER=$POSTGRES_USER
+export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+export DB_NAME=$DB_NAME
+export gauth_pg_password=$gauth_pg_password
+export gauth_pg_username=$gauth_pg_username
+export gauth_redis_password=$gauth_redis_password
+export gauth_admin_password=$gauth_admin_password
+export gauth_admin_password_plain=$gauth_admin_password_plain
+export gauth_admin_username=$gauth_admin_username
+export gauth_gws_client_id=$gauth_gws_client_id
+export gauth_gws_client_secret=$gauth_gws_client_secret
+export gauth_jks_keyPassword=$gauth_jks_keyPassword
+export gauth_jks_keyStorePassword=$gauth_jks_keyStorePassword
+export LOCATION=$LOCATION
+
 
 # For validation process need to evaluate release override values here
 replace_overrides POSTGRES_ADDR $POSTGRES_ADDR
