@@ -2,7 +2,7 @@
 # Addidtional IWD parameters
 # https://all.docs.genesys.com/PEC-IWD/Current/IWDPEGuide/Configure
 ###############################################################################
-version: 100.0.076.1437
+version: 100.0.087.2006
 redis:
   nodes: redis://infra-redis-redis-cluster.infra:6379
   useCluster: true
@@ -21,3 +21,7 @@ nexus:
 iwd:
   db:
     host: POSTGRES_ADDR
+
+elasticsearch:
+  host: ES_ADDR
+  port: 9200

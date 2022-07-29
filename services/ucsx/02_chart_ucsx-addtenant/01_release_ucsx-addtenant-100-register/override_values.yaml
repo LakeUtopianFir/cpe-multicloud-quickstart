@@ -13,7 +13,6 @@ gauth:
 
 db:
   host: POSTGRES_ADDR
-  ssl: false
   name: ucsx_tenant_db_name
   password: ucsx_tenant_db_password
   user: ucsx_tenant_db_user

@@ -37,8 +37,24 @@ service:
   env: {}
   annotations: {}
 
-elasticsearch:
-  url: http://elastic-es-http.infra.svc:9200
+ingress:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+  enabled: true
+  hosts:
+  - host: ucsx.${DOMAIN}
+    paths:
+    - path: /ucs/v3/
+      port: 8080
+    - path: /ucs/v10/
+      port: 8080
+    - path: /ucs/v3/config
+      port: 8500
+  tls:
+  - hosts:
+    - ucsx.${DOMAIN}
+    secretName: ucsx-ingress-ext
 
 # * Monitoring
 monitoring:

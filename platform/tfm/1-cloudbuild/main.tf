@@ -308,3 +308,259 @@ resource "google_cloudbuild_trigger" "services-designer" {
     _VIMAGEREGISTRY = "gcr.io/gts-multicloud-pe-dev/gts-multicloud-pe"
   }
 }
+
+resource "google_cloudbuild_trigger" "services-gvp" {
+  project = var.project_id
+  name = "10-Provision-PrivateEdition-Applications-GVP"
+
+  source_to_build {
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    ref       = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  git_file_source {
+    path      = "cloudbuild-services-gvp.yaml"
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    revision  = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  approval_config {
+    approval_required = false
+  }
+
+  substitutions = {
+    _VARTIFACTREPO  = "oci://us-west2-docker.pkg.dev/gts-multicloud-pe-dev/gts-multicloud-pe"   
+    _VDOMAIN        = var.fqdn
+    _VGCPPROJECT    = var.project_id
+    _VGCPREGION     = var.gkeregionprimary
+    _VGKECLUSTER    = var.gkecluster
+    _VHELMCOMMAND   = "install"
+    _VIMAGEREGISTRY = "gcr.io/gts-multicloud-pe-dev/gts-multicloud-pe"
+  }
+}
+
+resource "google_cloudbuild_trigger" "services-gsp" {
+  project = var.project_id
+  name = "11-Provision-PrivateEdition-Applications-GSP"
+
+  source_to_build {
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    ref       = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  git_file_source {
+    path      = "cloudbuild-services-gsp.yaml"
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    revision  = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  approval_config {
+    approval_required = false
+  }
+
+  substitutions = {
+    _VARTIFACTREPO  = "oci://us-west2-docker.pkg.dev/gts-multicloud-pe-dev/gts-multicloud-pe"   
+    _VDOMAIN        = var.fqdn
+    _VGCPPROJECT    = var.project_id
+    _VGCPREGION     = var.gkeregionprimary
+    _VGKECLUSTER    = var.gkecluster
+    _VHELMCOMMAND   = "install"
+    _VIMAGEREGISTRY = "gcr.io/gts-multicloud-pe-dev/gts-multicloud-pe"
+  }
+}
+
+resource "google_cloudbuild_trigger" "services-gim" {
+  project = var.project_id
+  name = "12-Provision-PrivateEdition-Applications-GIM"
+
+  source_to_build {
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    ref       = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  git_file_source {
+    path      = "cloudbuild-services-gim.yaml"
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    revision  = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  approval_config {
+    approval_required = false
+  }
+
+  substitutions = {
+    _VARTIFACTREPO  = "oci://us-west2-docker.pkg.dev/gts-multicloud-pe-dev/gts-multicloud-pe"   
+    _VDOMAIN        = var.fqdn
+    _VGCPPROJECT    = var.project_id
+    _VGCPREGION     = var.gkeregionprimary
+    _VGKECLUSTER    = var.gkecluster
+    _VHELMCOMMAND   = "install"
+    _VIMAGEREGISTRY = "gcr.io/gts-multicloud-pe-dev/gts-multicloud-pe"
+  }
+}
+
+resource "google_cloudbuild_trigger" "services-gca" {
+  project = var.project_id
+  name = "13-Provision-PrivateEdition-Applications-GCA"
+
+  source_to_build {
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    ref       = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  git_file_source {
+    path      = "cloudbuild-services-gca.yaml"
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    revision  = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  approval_config {
+    approval_required = false
+  }
+
+  substitutions = {
+    _VARTIFACTREPO  = "oci://us-west2-docker.pkg.dev/gts-multicloud-pe-dev/gts-multicloud-pe"   
+    _VDOMAIN        = var.fqdn
+    _VGCPPROJECT    = var.project_id
+    _VGCPREGION     = var.gkeregionprimary
+    _VGKECLUSTER    = var.gkecluster
+    _VHELMCOMMAND   = "install"
+    _VIMAGEREGISTRY = "gcr.io/gts-multicloud-pe-dev/gts-multicloud-pe"
+  }
+}
+
+resource "google_cloudbuild_trigger" "services-ucsx" {
+  project = var.project_id
+  name = "14-Provision-PrivateEdition-Applications-UCSX"
+
+  source_to_build {
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    ref       = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  git_file_source {
+    path      = "cloudbuild-services-ucsx.yaml"
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    revision  = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  approval_config {
+    approval_required = false
+  }
+
+  substitutions = {
+    _VARTIFACTREPO  = "oci://us-west2-docker.pkg.dev/gts-multicloud-pe-dev/gts-multicloud-pe"   
+    _VDOMAIN        = var.fqdn
+    _VGCPPROJECT    = var.project_id
+    _VGCPREGION     = var.gkeregionprimary
+    _VGKECLUSTER    = var.gkecluster
+    _VHELMCOMMAND   = "install"
+    _VIMAGEREGISTRY = "gcr.io/gts-multicloud-pe-dev/gts-multicloud-pe"
+  }
+}
+
+resource "google_cloudbuild_trigger" "services-nexus" {
+  project = var.project_id
+  name = "15-Provision-PrivateEdition-Applications-NEXUS"
+
+  source_to_build {
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    ref       = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  git_file_source {
+    path      = "cloudbuild-services-nexus.yaml"
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    revision  = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  approval_config {
+    approval_required = false
+  }
+
+  substitutions = {
+    _VARTIFACTREPO  = "oci://us-west2-docker.pkg.dev/gts-multicloud-pe-dev/gts-multicloud-pe"   
+    _VDOMAIN        = var.fqdn
+    _VGCPPROJECT    = var.project_id
+    _VGCPREGION     = var.gkeregionprimary
+    _VGKECLUSTER    = var.gkecluster
+    _VHELMCOMMAND   = "install"
+    _VIMAGEREGISTRY = "gcr.io/gts-multicloud-pe-dev/gts-multicloud-pe"
+  }
+}
+
+resource "google_cloudbuild_trigger" "services-iwd" {
+  project = var.project_id
+  name = "16-Provision-PrivateEdition-Applications-IWD"
+
+  source_to_build {
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    ref       = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  git_file_source {
+    path      = "cloudbuild-services-iwd.yaml"
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    revision  = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  approval_config {
+    approval_required = false
+  }
+
+  substitutions = {
+    _VARTIFACTREPO  = "oci://us-west2-docker.pkg.dev/gts-multicloud-pe-dev/gts-multicloud-pe"   
+    _VDOMAIN        = var.fqdn
+    _VGCPPROJECT    = var.project_id
+    _VGCPREGION     = var.gkeregionprimary
+    _VGKECLUSTER    = var.gkecluster
+    _VHELMCOMMAND   = "install"
+    _VIMAGEREGISTRY = "gcr.io/gts-multicloud-pe-dev/gts-multicloud-pe"
+  }
+}
+
+resource "google_cloudbuild_trigger" "services-cxc" {
+  project = var.project_id
+  name = "17-Provision-PrivateEdition-Applications-CXC"
+
+  source_to_build {
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    ref       = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  git_file_source {
+    path      = "cloudbuild-services-cxc.yaml"
+    uri       = "https://github.com/jonathanmabrito/multicloud-quickstart"
+    revision  = "refs/heads/development"
+    repo_type = "GITHUB"
+  }
+
+  approval_config {
+    approval_required = false
+  }
+
+  substitutions = {
+    _VARTIFACTREPO  = "oci://us-west2-docker.pkg.dev/gts-multicloud-pe-dev/gts-multicloud-pe"   
+    _VDOMAIN        = var.fqdn
+    _VGCPPROJECT    = var.project_id
+    _VGCPREGION     = var.gkeregionprimary
+    _VGKECLUSTER    = var.gkecluster
+    _VHELMCOMMAND   = "install"
+    _VIMAGEREGISTRY = "gcr.io/gts-multicloud-pe-dev/gts-multicloud-pe"
+  }
+}

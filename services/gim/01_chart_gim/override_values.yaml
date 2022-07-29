@@ -14,7 +14,7 @@ imagePullSecrets:
   pullsecret: {}
 
 monitoring:
-  enabled: true
+  enabled: false
   port: 8249
 
 volumes: |

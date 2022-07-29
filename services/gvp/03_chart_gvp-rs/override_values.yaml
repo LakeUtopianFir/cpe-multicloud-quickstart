@@ -85,14 +85,14 @@ context:
     CFG_PORT: '8888'
     CMDLINE: ./rs_startup.sh
     DBNAME: gvp_rs
-    DBUSER: sa
+    DBUSER: mssql
     rsDbSharedUsername: mssqlreader
     DBPORT: 1433
     #localconfigcachepath: /billing/gvp-rs/data/cache
     HOSTFOLDER: Hosts
     HOSTOS: CFGRedHatLinux
     LCAPORT: '4999'
-    MSSQLHOST: mssql-deployment.infra.svc.cluster.local
+    MSSQLHOST: mssqlserver-2019.infra.svc.cluster.local
     RSAPP: azure_rs
     RSJVM_INITIALHEAPSIZE: 4096m
     RSJVM_MAXHEAPSIZE: 8192m
