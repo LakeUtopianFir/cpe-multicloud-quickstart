@@ -17,10 +17,10 @@ postgres:
     create: true
   image: postgres:11-alpine
   # REQUIRED FIELDS:
-  username: gauth_pg_username
-  password: gauth_pg_password
+  username: $gauth_pg_username
+  password: $gauth_pg_password
   db: gauth
-  host: POSTGRES_ADDR
+  host: $POSTGRES_ADDR
   port: 5432
 
 redis:
@@ -36,7 +36,7 @@ redis:
   use_tls: false
   # REDIS AUTH
   password_required: true
-  password: gauth_redis_password
+  password: $gauth_redis_password
 
 services:
   secrets:
@@ -52,7 +52,7 @@ services:
       consul_token: keyvault-consul-consul-gauth-token
   # Number of pod replicas, recommended to be N+1
   replicas: 2
-  location: /USW1
+  location: $LOCATION
   db:
     init: true
     poolSize: 3
@@ -62,10 +62,10 @@ services:
     name_override:
     create: true
     # REQUIRED FIELDS:
-    admin_username: gauth_admin_username
-    admin_password: gauth_admin_password
-    client_id: gauth_gws_client_id
-    client_secret: gauth_gws_client_secret
+    admin_username: $gauth_admin_username
+    admin_password: $gauth_admin_password
+    client_id: $gauth_gws_client_id
+    client_secret: $gauth_gws_client_secret
 
   auth_ui:
     # Pod resources requests and limits
@@ -87,13 +87,13 @@ services:
 
       # Convert keystore.jks file content to base64 ( cat keystore.jks | base64 ) and put the output here
       keyStore: jksStorage.jks
-      keyStoreFileData: JKS_KEY_CONTENT
+      keyStoreFileData: ${JKS_KEY_CONTENT}
       # Keystore password
-      keyStorePassword: gauth_jks_keyStorePassword
+      keyStorePassword: $gauth_jks_keyStorePassword
       # SSL key alias
-      keyAlias: gws-auth-key
+      keyAlias: $gws-auth-key
       # SSL key password
-      keyPassword: gauth_jks_keyPassword
+      keyPassword: $gauth_jks_keyPassword
     # Number of pod replicas, recommended to be N+1, defaults to services.replica if empty
     replicas:
     # Pod resources requests and limits
