@@ -74,7 +74,7 @@ sed -i "s|INSERT_POSTGRES_PASSWORD|$POSTGRESPASSWORD|g" "./services/$SERVICE/$SE
 
 cat "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
 
-kubectl apply -f  "$deployment_secrets" #./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml
+kubectl apply -f ./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml
 
 echo "***********************"
 echo "Run Helm Charts"
