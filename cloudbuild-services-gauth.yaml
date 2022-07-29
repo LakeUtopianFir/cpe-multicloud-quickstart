@@ -3,7 +3,8 @@ steps:
   name: 'gcr.io/gcpe0003/privateedition'
   entrypoint: 'bash'
   args: ['services/provision-gauth.sh']
-  secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR']
+  secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR','DB_NAME','gauth_admin_password','gauth_admin_password_plain','auth_admin_username','gauth_gws_client_id','gauth_gws_client_secret',
+              'gauth_jks_keyPassword','gauth_jks_keyStorePassword','gauth_pg_password','gauth_pg_username','gauth_redis_password','LOCATION','POSTGRES_ADDR','POSTGRES_PASSWORD','POSTGRES_USER']
   env:
     - 'VDOMAIN=${_VDOMAIN}'
     - 'VGCPPROJECT=${_VGCPPROJECT}'
@@ -22,6 +23,36 @@ availableSecrets:
     env: "JFROGUSR"
   - versionName: "projects/402866575973/secrets/JFROGPASS/versions/1"
     env: "JFROGPASS"
+  - versionName: "projects/402866575973/secrets/DB_NAME/versions/1"
+    env: "DB_NAME"
+  - versionName: "projects/402866575973/secrets/gauth_admin_password/versions/1"
+    env:  "gauth_admin_password"
+  - versionName: "projects/402866575973/secrets/gauth_admin_password_plain/versions/1"
+    env:  "gauth_admin_password_plain"
+  - versionName: "projects/402866575973/secrets/gauth_admin_username/versions/1"
+    env:  "gauth_admin_username"
+  - versionName: "projects/402866575973/secrets/gauth_gws_client_id/versions/1"
+    env:  "gauth_gws_client_id"
+  - versionName: "projects/402866575973/secrets/gauth_gws_client_secret/versions/1"
+    env:  "gauth_gws_client_secret"
+  - versionName: "projects/402866575973/secrets/gauth_jks_keyPassword/versions/1"
+    env:  "gauth_jks_keyPassword"
+  - versionName: "projects/402866575973/secrets/gauth_jks_keyStorePassword/versions/1"
+    env:  "gauth_jks_keyStorePassword"
+  - versionName: "projects/402866575973/secrets/gauth_pg_password/versions/1"
+    env:  "gauth_pg_password"
+  - versionName: "projects/402866575973/secrets/gauth_pg_username/versions/1"
+    env:  "gauth_pg_username"
+  - versionName: "projects/402866575973/secrets/gauth_redis_password/versions/1"
+    env:  "gauth_redis_password"
+  - versionName: "projects/402866575973/secrets/LOCATION/versions/1"
+    env:  "LOCATION"
+  - versionName: "projects/402866575973/secrets/POSTGRES_ADDR/versions/1"
+    env:  "POSTGRES_ADDR"
+  - versionName: "projects/402866575973/secrets/POSTGRES_PASSWORD/versions/1"
+    env:  "POSTGRES_PASSWORD"
+  - versionName: "projects/402866575973/secrets/POSTGRES_USER/versions/1"
+    env:  "POSTGRES_USER"                                        
 options:
   logging: CLOUD_LOGGING_ONLY
   #Jira-CPE-4863 

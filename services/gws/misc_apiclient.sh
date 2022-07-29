@@ -57,8 +57,9 @@ REDIRECT_URIS=$(cat << EOF
 EOF
 )
 
-gauth_admin_username=$( kubectl get secrets deployment-secrets -n gauth -o custom-columns=:data.gauth_admin_username --no-headers | base64 -d )
-gauth_admin_password_plain=Genesys1234
+
+#gauth_admin_username=$( kubectl get secrets deployment-secrets -n gauth -o custom-columns=:data.gauth_admin_username --no-headers | base64 -d )
+#gauth_admin_password_plain=$gauth_admin_username
 
 echo $gauth_admin_username
 echo $gauth_admin_password_plain

@@ -13,7 +13,21 @@ export FULLCOMMAND=$VHELMCOMMAND
 export pullsecret=$PULLSECRET
 export JFROGUSR=$JFROGUSR
 export JFROGPASS=$JFROGPASS
-export deployment_secrets=$deployment_secrets
+export POSTGRES_ADDR=$POSTGRES_ADDR        
+export POSTGRES_USER=$POSTGRES_USER
+export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+export DB_NAME=$DB_NAME
+export gauth_pg_password=$gauth_pg_password
+export gauth_pg_username=$gauth_pg_username
+export gauth_redis_password=$gauth_redis_password
+export gauth_admin_password=$gauth_admin_password
+export gauth_admin_password_plain=$gauth_admin_password_plain
+export gauth_admin_username=$gauth_admin_username
+export gauth_gws_client_id=$gauth_gws_client_id
+export gauth_gws_client_secret=$gauth_gws_client_secret
+export gauth_jks_keyPassword=$gauth_jks_keyPassword
+export gauth_jks_keyStorePassword=$gauth_jks_keyStorePassword
+export LOCATION=$LOCATION
 
 echo "***********************"
 echo "Logging into GCP"
@@ -67,14 +81,14 @@ echo "***********************"
 echo "Creating K8 Secrets"
 echo "***********************"
 REDISPASSWORD=$(kubectl get -n infra secrets infra-redis-redis-cluster -o jsonpath='{.data.redis-password}' | base64 --decode)
-sed -i "s|INSERT_REDIS_PASSWORD|$REDISPASSWORD|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
+#sed -i "s|INSERT_REDIS_PASSWORD|$REDISPASSWORD|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
 
 POSTGRESPASSWORD=$(kubectl get secret --namespace infra pgdb-gws-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
-sed -i "s|INSERT_POSTGRES_PASSWORD|$POSTGRESPASSWORD|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
+#sed -i "s|INSERT_POSTGRES_PASSWORD|$POSTGRESPASSWORD|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
 
-cat "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
+#cat "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
 
-kubectl apply -f ./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml
+#kubectl apply -f ./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml
 
 echo "***********************"
 echo "Run Helm Charts"

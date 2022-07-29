@@ -18,8 +18,8 @@ echo $LOCATION
 #LOCATION=$(echo $INPUT_COMMAND | awk '{print $3}')
 [[ -z "$LOCATION" ]] && LOCATION="/USW1"
 
-gauth_admin_username=$( kubectl get secrets deployment-secrets -n gauth -o custom-columns=:data.gauth_admin_username --no-headers | base64 -d )
-gauth_admin_password_plain=Genesys1234
+#gauth_admin_username=$( kubectl get secrets deployment-secrets -n gauth -o custom-columns=:data.gauth_admin_username --no-headers | base64 -d )
+#gauth_admin_password_plain=Genesys1234
 CREDS="$gauth_admin_username:$gauth_admin_password_plain"
 
 echo $CREDS
