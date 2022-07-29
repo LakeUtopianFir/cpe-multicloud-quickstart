@@ -13,6 +13,7 @@ export FULLCOMMAND=$VHELMCOMMAND
 export pullsecret=$PULLSECRET
 export JFROGUSR=$JFROGUSR
 export JFROGPASS=$JFROGPASS
+export deployment_secrets=$deployment_secrets
 
 echo "***********************"
 echo "Logging into GCP"
@@ -73,7 +74,7 @@ sed -i "s|INSERT_POSTGRES_PASSWORD|$POSTGRESPASSWORD|g" "./services/$SERVICE/$SE
 
 cat "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
 
-kubectl apply -f  ./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml
+kubectl apply -f  "$deployment_secrets" #./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml
 
 echo "***********************"
 echo "Run Helm Charts"

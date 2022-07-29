@@ -3,7 +3,7 @@ steps:
   name: 'gcr.io/gcpe0003/privateedition'
   entrypoint: 'bash'
   args: ['services/provision-gauth.sh']
-  secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR']
+  secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR',"deployment_secrets"]
   env:
     - 'VDOMAIN=${_VDOMAIN}'
     - 'VGCPPROJECT=${_VGCPPROJECT}'
@@ -22,6 +22,8 @@ availableSecrets:
     env: "JFROGUSR"
   - versionName: "projects/402866575973/secrets/JFROGPASS/versions/1"
     env: "JFROGPASS"
+  - versionName: "projects/402866575973/secrets/deployment-secrets/versions/1"
+    env: "deployment_secrets"
 options:
   logging: CLOUD_LOGGING_ONLY
   #Jira-CPE-4863 
