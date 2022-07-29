@@ -21,6 +21,7 @@ availableSecrets:
   - versionName: "projects/402866575973/secrets/JFROGUSR/versions/1"
     env: "JFROGUSR"
   - versionName: "projects/402866575973/secrets/JFROGPASS/versions/1"
-    env: JFROGPASS
+    env: "JFROGPASS"
 options:
   logging: CLOUD_LOGGING_ONLY
+  #Jira-CPE-4863 
