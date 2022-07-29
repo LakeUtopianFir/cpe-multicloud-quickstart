@@ -3,7 +3,7 @@ steps:
   name: 'gcr.io/gcpe0003/privateedition'
   entrypoint: 'bash'
   args: ['services/provision-gauth.sh']
-  secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR','DB_NAME','gauth_admin_password','gauth_admin_password_plain','auth_admin_username','gauth_gws_client_id','gauth_gws_client_secret',
+  secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR','DB_NAME','gauth_admin_password','gauth_admin_password_plain','gauth_admin_username','gauth_gws_client_id','gauth_gws_client_secret',
               'gauth_jks_keyPassword','gauth_jks_keyStorePassword','gauth_pg_password','gauth_pg_username','gauth_redis_password','LOCATION','POSTGRES_ADDR','POSTGRES_PASSWORD','POSTGRES_USER']
   env:
     - 'VDOMAIN=${_VDOMAIN}'
