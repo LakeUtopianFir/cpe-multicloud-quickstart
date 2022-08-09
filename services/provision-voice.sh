@@ -37,7 +37,6 @@ else
 fi
 kubectl config set-context --current --namespace=$NS
 
-
 echo "********************"
 echo "Creating Pull Secret"
 echo "********************"
@@ -49,7 +48,7 @@ metadata:
   namespace: $NS
 data:
   .dockerconfigjson: >-
-     ${pullsecret}
+     $pullsecret
 type: kubernetes.io/dockerconfigjson
 EOF
 
