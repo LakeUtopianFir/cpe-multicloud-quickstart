@@ -10,6 +10,11 @@ export DOMAIN=$VDOMAIN
 export IMAGE_REGISTRY=$VIMAGEREGISTRY
 export ARTIFACT_REPO=$VARTIFACTREPO
 export FULLCOMMAND=$VHELMCOMMAND
+export tenant_t100_pg_db_user=$tenant_t100_pg_db_user
+export tenant_t100_pg_db_password=$tenant_t100_pg_db_password
+export tenant_t100_pg_db_name=$tenant_t100_pg_db_name
+export tenant_gauth_client_secret=$tenant_gauth_client_secret
+export tenant_gauth_client_id=$tenant_gauth_client_id
 
 echo "***********************"
 echo "Logging into GCP"
@@ -36,27 +41,38 @@ echo "***********************"
 echo "Creating K8 Secrets"
 echo "***********************"
 DNSSECRET=$(kubectl get -n kube-system svc kube-dns -o custom-columns=:spec.clusterIP --no-headers)
-sed -i "s|INSERT_DNS|$DNSSECRET|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
+#sed -i "s|INSERT_DNS|$DNSSECRET|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
+echo "Setting Current Kube-DNS IP: $DNSSECRET"
 
 CONSULSECRET=$(kubectl get -n consul secrets consul-bootstrap-acl-token -o jsonpath='{.data.token}' | base64 --decode)
-sed -i "s|INSERT_CONSUL_TOKEN|$CONSULSECRET|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
+echo "Setting Consul Bootstrap ACL Secret"
+#sed -i "s|INSERT_CONSUL_TOKEN|$CONSULSECRET|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
+#echo $CONSULSECRET
 
 REDISIP=$(kubectl get svc infra-redis-redis-cluster -n infra -o jsonpath="{.spec.clusterIP}")
-sed -i "s|INSERT_REDIS_IP|$REDISIP|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
+REDIS_PORT=$(kubectl get svc infra-redis-redis-cluster -n infra -o jsonpath="{.spec.ports.port}")
+echo "Setting Redis Cluster ip: $REDIS_IP"
 
-REDISPASSWORD=$(kubectl get -n infra secrets infra-redis-redis-cluster -o jsonpath='{.data.redis-password}' | base64 --decode)
-sed -i "s|INSERT_REDIS_PASSWORD|$REDISPASSWORD|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
+REDIS_PASSWORD=$(kubectl get secrets infra-redis-redis-cluster -o jsonpath='{.data.redis-password}' | base64 --decode)
+echo "Setting Redis password Secret"
+#REDISPASSWORD=$(kubectl get -n infra secrets infra-redis-redis-cluster -o jsonpath='{.data.redis-password}' | base64 --decode)
+#sed -i "s|INSERT_REDIS_PASSWORD|$REDISPASSWORD|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
 
-POSTGRESPASSWORD=$(kubectl get secret --namespace infra pgdb-std-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
-sed -i "s|INSERT_POSTGRES_PASSWORD|$POSTGRESPASSWORD|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
 
-cat "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
+#POSTGRESPASSWORD=$(kubectl get secret --namespace infra pgdb-std-postgresql -o jsonpath="{.data.postgres-password}" | base64 --decode)
+#sed -i "s|INSERT_POSTGRES_PASSWORD|$POSTGRESPASSWORD|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
 
-kubectl apply -f  ./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml
+#cat "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
+
+#kubectl apply -f  ./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml
 
 echo "***********************"
 echo "Run Helm Charts"
 echo "***********************"
+
+echo "Adding helm-staging repo..."
+helm repo add helm-staging https://pureengage.jfrog.io/artifactory/helm-staging  --username $JFROGUSR --password $JFROGPASS
+helm repo update 
 
 cd "./services/$SERVICE"
 COMMAND=$(echo $FULLCOMMAND | cut -d' ' -f1)

@@ -5,11 +5,11 @@
 # We extract secrets to environment variables. It will evaluate variables in
 # override values by workflow.
 ###############################################################################
-function get_secret {
-  # Using: get_secret secret_name
-  echo $( kubectl get secrets deployment-secrets -o custom-columns=:data.$1 \
-      --no-headers | base64 -d )
-}
+#function get_secret {
+#  # Using: get_secret secret_name
+#  echo $( kubectl get secrets deployment-secrets -o custom-columns=:data.$1 \
+#      --no-headers | base64 -d )
+#}
 
 function create_secret {
   # Using: create_secret secret_name secrete_value_name secret_value
@@ -39,17 +39,17 @@ function create_endpoint {
 ###############################################################################
 #             REDIS connection address and credentials
 ###############################################################################
-export REDIS_PASSWORD=$( get_secret REDIS_PASSWORD )
-export REDIS_IP=$( get_secret REDIS_IP )
-export REDIS_PORT=$( get_secret REDIS_PORT )
+export REDIS_PASSWORD=${REDIS_PASSWORD}
+export REDIS_IP=${REDIS_IP}
+export REDIS_PORT="6379"
 ###############################################################################
 #             CONSUL credentials
 ###############################################################################
-export CONSUL_VOICE_TOKEN=$( get_secret CONSUL_VOICE_TOKEN )
+export CONSUL_VOICE_TOKEN=${CONSULSECRET}
 ###############################################################################
 #             KAFKA connection address
 ###############################################################################
-export KAFKA_ADDRESS=$( get_secret KAFKA_ADDRESS )
+export KAFKA_ADDRESS=${KAFKA_ADDRESS}
 ###############################################################################
 
 

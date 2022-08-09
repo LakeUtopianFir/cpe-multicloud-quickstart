@@ -3,6 +3,8 @@ steps:
   name: 'gcr.io/gts-multicloud-pe-dev/privateedition'
   entrypoint: 'bash'
   args: ['services/provision-voice.sh']
+  secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR','KAFKA_ADDRESS','JKS_KEY_CONTENT','LOCATION','POSTGRES_ADDR','POSTGRES_PASSWORD','POSTGRES_USER',
+              'tenant_t100_pg_db_user','tenant_t100_pg_db_password','tenant_t100_pg_db_name','tenant_gauth_client_secret','tenant_gauth_client_id']
   timeout: '3600s'
   env:
     - 'VDOMAIN=${_VDOMAIN}'
@@ -13,3 +15,33 @@ steps:
     - 'VIMAGEREGISTRY=${_VIMAGEREGISTRY}'
     - 'VARTIFACTREPO=${_VARTIFACTREPO}'
 timeout: '3600s'
+availableSecrets:
+  secretManager:
+  - versionName: "projects/402866575973/secrets/PULLSECRET/versions/1"
+    env: 'PULLSECRET'
+  - versionName: "projects/402866575973/secrets/JFROGUSR/versions/1"
+    env: "JFROGUSR"
+  - versionName: "projects/402866575973/secrets/JFROGPASS/versions/1"
+    env: "JFROGPASS"
+  - versionName: "projects/402866575973/secrets/KAFKA_ADDRESS/versions/1"
+    env: "KAFKA_ADDRESS"
+  - versionName: "projects/402866575973/secrets/LOCATION/versions/1"
+    env:  "LOCATION"
+  - versionName: "projects/402866575973/secrets/tenant_gauth_client_id/versions/1"
+    env: "tenant_gauth_client_id"
+  - versionName: "projects/402866575973/secrets/tenant_gauth_client_secret/versions/1"
+    env: "tenant_gauth_client_secret"
+  - versionName: "projects/402866575973/secrets/tenant_t100_pg_db_name/versions/1"
+    env: "tenant_t100_pg_db_name"
+  - versionName: "projects/402866575973/secrets/tenant_t100_pg_db_password/versions/1"
+    env: "tenant_t100_pg_db_password"
+  - versionName: "projects/402866575973/secrets/tenant_t100_pg_db_user/versions/1"
+    env: "tenant_t100_pg_db_user"
+  - versionName: "projects/402866575973/secrets/POSTGRES_ADDR_STD/versions/1"
+    env:  "POSTGRES_ADDR"
+  - versionName: "projects/402866575973/secrets/POSTGRES_PASSWORD/versions/1"
+    env:  "POSTGRES_PASSWORD"
+  - versionName: "projects/402866575973/secrets/POSTGRES_USER/versions/1"
+    env:  "POSTGRES_USER"                                        
+options:
+  logging: CLOUD_LOGGING_ONLY
