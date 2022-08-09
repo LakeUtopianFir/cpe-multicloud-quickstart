@@ -49,9 +49,10 @@ echo "Setting Consul Bootstrap ACL Secret"
 #sed -i "s|INSERT_CONSUL_TOKEN|$CONSULSECRET|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
 #echo $CONSULSECRET
 
-REDISIP=$(kubectl get svc infra-redis-redis-cluster -n infra -o jsonpath="{.spec.clusterIP}")
-REDIS_PORT=$(kubectl get svc infra-redis-redis-cluster -n infra -o jsonpath="{.spec.ports.port}")
+REDIS_IP=$(kubectl get svc infra-redis-redis-cluster -n infra -o jsonpath="{.spec.clusterIP}")
 echo "Setting Redis Cluster ip: $REDIS_IP"
+#REDIS_PORT=$(kubectl get svc infra-redis-redis-cluster -n infra -o jsonpath="{.spec.ports.port}")
+
 
 REDIS_PASSWORD=$(kubectl get secrets infra-redis-redis-cluster -n infra -o jsonpath='{.data.redis-password}' | base64 --decode)
 echo "Setting Redis password Secret"
