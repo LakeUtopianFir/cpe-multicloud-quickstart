@@ -37,6 +37,24 @@ else
 fi
 kubectl config set-context --current --namespace=$NS
 
+
+echo "********************"
+echo "Creating Pull Secret"
+echo "********************"
+cat <<EOF | kubectl create -n $NS -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pullsecret
+  namespace: $NS
+data:
+  .dockerconfigjson: >-
+     $pullsecret
+type: kubernetes.io/dockerconfigjson
+EOF
+
+echo $(kubectl get secrets pullsecret -n $NS)
+
 echo "***********************"
 echo "Creating K8 Secrets"
 echo "***********************"
