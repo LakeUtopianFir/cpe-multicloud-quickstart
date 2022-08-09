@@ -48,7 +48,7 @@ metadata:
   namespace: $NS
 data:
   .dockerconfigjson: >-
-     $pullsecret
+     ${pullsecret}
 type: kubernetes.io/dockerconfigjson
 EOF
 
