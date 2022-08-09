@@ -3,7 +3,7 @@ steps:
   name: 'gcr.io/gts-multicloud-pe-dev/privateedition'
   entrypoint: 'bash'
   args: ['services/provision-voice.sh']
-  secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR','KAFKA_ADDRESS','JKS_KEY_CONTENT','LOCATION','POSTGRES_ADDR','POSTGRES_PASSWORD','POSTGRES_USER',
+  secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR','KAFKA_ADDRESS','LOCATION','POSTGRES_ADDR','POSTGRES_PASSWORD','POSTGRES_USER',
               'tenant_t100_pg_db_user','tenant_t100_pg_db_password','tenant_t100_pg_db_name','tenant_gauth_client_secret','tenant_gauth_client_id']
   timeout: '3600s'
   env:
