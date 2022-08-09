@@ -53,7 +53,7 @@ REDISIP=$(kubectl get svc infra-redis-redis-cluster -n infra -o jsonpath="{.spec
 REDIS_PORT=$(kubectl get svc infra-redis-redis-cluster -n infra -o jsonpath="{.spec.ports.port}")
 echo "Setting Redis Cluster ip: $REDIS_IP"
 
-REDIS_PASSWORD=$(kubectl get secrets infra-redis-redis-cluster -o jsonpath='{.data.redis-password}' | base64 --decode)
+REDIS_PASSWORD=$(kubectl get secrets infra-redis-redis-cluster -n infra -o jsonpath='{.data.redis-password}' | base64 --decode)
 echo "Setting Redis password Secret"
 #REDISPASSWORD=$(kubectl get -n infra secrets infra-redis-redis-cluster -o jsonpath='{.data.redis-password}' | base64 --decode)
 #sed -i "s|INSERT_REDIS_PASSWORD|$REDISPASSWORD|g" "./services/$SERVICE/$SERVICE-k8secrets-deployment-secrets.yaml"
