@@ -52,7 +52,7 @@ data:
 type: kubernetes.io/dockerconfigjson
 EOF
 
-echo $(kubectl get secrets pullsecret -n $NS)
+echo "created secret: $(kubectl get secrets pullsecret -n $NS)"
 
 echo "***********************"
 echo "Creating K8 Secrets"
