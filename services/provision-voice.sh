@@ -10,11 +10,13 @@ export DOMAIN=$VDOMAIN
 export IMAGE_REGISTRY=$VIMAGEREGISTRY
 export ARTIFACT_REPO=$VARTIFACTREPO
 export FULLCOMMAND=$VHELMCOMMAND
+export PULLSECRET=$PULLSECRET
 export tenant_t100_pg_db_user=$tenant_t100_pg_db_user
 export tenant_t100_pg_db_password=$tenant_t100_pg_db_password
 export tenant_t100_pg_db_name=$tenant_t100_pg_db_name
 export tenant_gauth_client_secret=$tenant_gauth_client_secret
 export tenant_gauth_client_id=$tenant_gauth_client_id
+ 
 
 echo "***********************"
 echo "Logging into GCP"
@@ -48,7 +50,7 @@ metadata:
   namespace: $NS
 data:
   .dockerconfigjson: >-
-     ${pullsecret}
+     ${PULLSECRET}
 type: kubernetes.io/dockerconfigjson
 EOF
 
