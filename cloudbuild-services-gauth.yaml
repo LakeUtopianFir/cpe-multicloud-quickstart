@@ -47,7 +47,7 @@ availableSecrets:
     env:  "gauth_redis_password"
   - versionName: "projects/402866575973/secrets/LOCATION/versions/1"
     env:  "LOCATION"
-  - versionName: "projects/402866575973/secrets/POSTGRES_ADDR/versions/1"
+  - versionName: "projects/402866575973/secrets/POSTGRES_ADDR_GWS/versions/1"
     env:  "POSTGRES_ADDR"
   - versionName: "projects/402866575973/secrets/POSTGRES_PASSWORD/versions/1"
     env:  "POSTGRES_PASSWORD"
