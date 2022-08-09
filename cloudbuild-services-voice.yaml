@@ -1,6 +1,6 @@
 steps:
 - id: 'Provision Voice Components'
-  name: 'gcr.io/gts-multicloud-pe-dev/privateedition'
+  name: 'gcr.io/gcpe0003/privateedition'
   entrypoint: 'bash'
   args: ['services/provision-voice.sh']
   secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR','KAFKA_ADDRESS','LOCATION','POSTGRES_ADDR','POSTGRES_PASSWORD','POSTGRES_USER',
