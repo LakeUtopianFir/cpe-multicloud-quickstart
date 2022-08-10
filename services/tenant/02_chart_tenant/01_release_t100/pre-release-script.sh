@@ -30,7 +30,7 @@ function create_secret {
 export POSTGRES_ADDR=${POSTGRES_ADDR}
 export tenant_t100_pg_db_name=${tenant_t100_pg_db_name}
 export tenant_t100_pg_db_user=${tenant_t100_pg_db_user}
-export tenant_t100_pg_db_password=${tenant_pg_db_password}
+export tenant_t100_pg_db_password=${tenant_t100_pg_db_password}
 ###############################################################################
 #             GAUTH credentials
 ###############################################################################
