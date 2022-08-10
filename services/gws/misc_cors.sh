@@ -41,8 +41,8 @@ echo $LOCATION
 gauth_admin_username=$( kubectl get secrets deployment-secrets -n gauth -o custom-columns=:data.gauth_admin_username --no-headers | base64 -d )
 gauth_admin_password_plain=Genesys1234
 
-CREDS="$gauth_admin_username:$gauth_admin_password_plain"
-domain=cluster02.gcp.demo.genesys.com
+CREDS="$gws_ops_user:$gauth_admin_password_plain"
+domain=${domain}
 
 echo $CREDS
 echo $domain
@@ -70,7 +70,7 @@ echo "*** Pre-change list of origins:"
 # NEW API
 #kubectl exec $GAPOD -- bash -c "curl -s http://gauth-environment/environment/v3/cors -u $CREDS" | jq .data.origins
 # OLD API
-kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.cluster02.gcp.demo.genesys.com/environment/v3/contact-centers/$UUID/settings -u $CREDS" | jq .data.settings
+kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.$domain/environment/v3/contact-centers/$UUID/settings -u $CREDS" | jq .data.settings
 
 # Older API - add all origins in one request
 # ucsx? tlm?
@@ -111,7 +111,7 @@ ORIGINS()
 EOF
 }
 
-kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XPOST https://gauth-int.cluster02.gcp.demo.genesys.com/environment/v3/contact-centers/$UUID/settings -u $CREDS -H 'Content-Type: application/json' -d '$(ORIGINS)'" | tee RSP
+kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XPOST https://gauth-int.$domain/environment/v3/contact-centers/$UUID/settings -u $CREDS -H 'Content-Type: application/json' -d '$(ORIGINS)'" | tee RSP
 
 
 ##################################
@@ -146,4 +146,4 @@ echo "*** Current list of origins:"
 # NEW API
 #kubectl exec $GAPOD -- bash -c "curl -s http://gauth-environment/environment/v3/cors -u $CREDS" | jq .data.origins
 # OLD API
-kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.cluster02.gcp.demo.genesys.com/environment/v3/contact-centers/$UUID/settings -u $CREDS" | jq .data.settings
+kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.$domain/environment/v3/contact-centers/$UUID/settings -u $CREDS" | jq .data.settings

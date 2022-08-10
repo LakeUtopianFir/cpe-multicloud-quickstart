@@ -20,7 +20,7 @@ echo $LOCATION
 
 #gauth_admin_username=$( kubectl get secrets deployment-secrets -n gauth -o custom-columns=:data.gauth_admin_username --no-headers | base64 -d )
 #gauth_admin_password_plain=Genesys1234
-CREDS="$gauth_admin_username:$gauth_admin_password_plain"
+CREDS="$gws_ops_user:$gauth_admin_password_plain"
 
 echo $CREDS
 
@@ -75,7 +75,7 @@ EOF
 echo $UUID
 echo $NEW_DATA
 
-kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XPOST https://gauth-int.cluster02.gcp.demo.genesys.com/environment/v3/environments -u $CREDS -H 'Content-Type: application/json' -d '$(NEW_DATA)'" | tee RSP
+kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XPOST https://gauth-int.$domain/environment/v3/environments -u $CREDS -H 'Content-Type: application/json' -d '$(NEW_DATA)'" | tee RSP
 sleep 3
 
 ###++++++++++++++
@@ -84,7 +84,7 @@ sleep 3
 NEW_ENV=$(cat RSP | jq .path | cut -d'/' -f3| sed 's/"//')
 
 echo "*** Current list of environments:"
-kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.cluster02.gcp.demo.genesys.com/environment/v3/environments -u $CREDS" | jq .data[]
+kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.$domain/environment/v3/environments -u $CREDS" | jq .data[]
 
 
 ###### Create CCID ######
@@ -103,11 +103,11 @@ NEW_DATA()
 EOF
 }
 
-kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XPOST https://gauth-int.cluster02.gcp.demo.genesys.com/environment/v3/contact-centers -u $CREDS -H 'Content-Type: application/json' -d '$(NEW_DATA)'" | tee RSP
+kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XPOST https://gauth-int.$domain/environment/v3/contact-centers -u $CREDS -H 'Content-Type: application/json' -d '$(NEW_DATA)'" | tee RSP
 sleep 3
 
 ###++++++++++++++
 [[ "$(cat RSP | jq .status.code)" != "0" ]] && echo "ERROR 2: failed http request to Gauth: "$(cat RSP | jq .status) && exit 1
 
 echo "*** Current list of CCIDs:"
-kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.cluster02.gcp.demo.genesys.com/environment/v3/contact-centers -u $CREDS" | jq .data[]
+kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.$domain/environment/v3/contact-centers -u $CREDS" | jq .data[]
