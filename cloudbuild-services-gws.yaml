@@ -13,6 +13,7 @@ steps:
     - 'VHELMCOMMAND=${_VHELMCOMMAND}'
     - 'VIMAGEREGISTRY=${_VIMAGEREGISTRY}'
     - 'VARTIFACTREPO=${_VARTIFACTREPO}'
+    - 'VHELMREGISTRY=${_VHELMREGISTRY}'
   timeout: '3600s'
 availableSecrets:
   secretManager:

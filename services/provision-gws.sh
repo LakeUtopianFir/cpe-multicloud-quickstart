@@ -8,6 +8,7 @@ export NS=gws
 export SERVICE=gws
 export DOMAIN=$VDOMAIN
 export IMAGE_REGISTRY=$VIMAGEREGISTRY
+export HELM_REGISTRY=$VHELMREGISTRY
 export ARTIFACT_REPO=$VARTIFACTREPO
 export FULLCOMMAND=$VHELMCOMMAND
 export pullsecret=$PULLSECRET
@@ -111,6 +112,8 @@ chmod +x ./services/$SERVICE/misc_cors.sh
 echo "***********************"
 echo "Run Helm Charts"
 echo "***********************"
+
+
 cd "./services/$SERVICE"
 COMMAND=$(echo $FULLCOMMAND | cut -d' ' -f1)
 if [[ "$FULLCOMMAND" == *" "* ]]; then
