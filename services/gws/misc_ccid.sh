@@ -74,6 +74,7 @@ EOF
 
 echo $UUID
 echo $NEW_DATA
+echo $domain
 
 kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XPOST https://gauth-int.$domain/environment/v3/environments -u $CREDS -H 'Content-Type: application/json' -d '$(NEW_DATA)'" | tee RSP
 sleep 3
