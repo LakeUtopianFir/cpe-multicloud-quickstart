@@ -30,7 +30,9 @@ export gws_app_workspace=$gws_app_workspace
 export gws_as_pg_pass=$gws_as_pg_pass
 export gws_as_pg_user=$gws_as_pg_user
 export gws_pg_pass=$gws_pg_pass
-
+export gauth_admin_password=$gauth_admin_password
+export gauth_admin_password_plain=$gauth_admin_password_plain
+export gauth_admin_username=$gauth_admin_username
 
 echo "***********************"
 echo "Logging into GCP"

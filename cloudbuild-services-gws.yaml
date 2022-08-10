@@ -4,7 +4,7 @@ steps:
   entrypoint: 'bash'
   args: ['services/provision-gws.sh']
   secretEnv: ['PULLSECRET','JFROGPASS','JFROGUSR','DB_NAME','LOCATION','POSTGRES_ADDR','POSTGRES_PASSWORD','POSTGRES_USER','gws_ops_pass_encr','gws_ops_user','DB_NAME_PROV',
-              'gws_client_id','gws_client_secret','gws_pg_user','DB_NAME_GWS','gws_app_provisioning','gws_app_workspace','gws_as_pg_pass','gws_as_pg_user','gws_pg_pass']
+              'gauth_admin_password','gauth_admin_password_plain','gws_client_id','gws_client_secret','gws_pg_user','DB_NAME_GWS','gws_app_provisioning','gws_app_workspace','gws_as_pg_pass','gws_as_pg_user','gws_pg_pass']
   env:
     - 'VDOMAIN=${_VDOMAIN}'
     - 'VGCPPROJECT=${_VGCPPROJECT}'
@@ -46,6 +46,10 @@ availableSecrets:
     env: gws_client_secret
   - versionName: "projects/402866575973/secrets/gauth_admin_password/versions/1"
     env: "gws_ops_pass_encr"
+  - versionName: "projects/402866575973/secrets/gauth_admin_password/versions/1"
+    env: "gauth_admin_password"
+  - versionName: "projects/402866575973/secrets/gauth_admin_password_plain/versions/1"
+    env: "gauth_admin_password_plain"
   - versionName: "projects/402866575973/secrets/gauth_admin_username/versions/1"
     env: "gws_ops_user"
   - versionName: "projects/402866575973/secrets/gws_pg_user/versions/1"
