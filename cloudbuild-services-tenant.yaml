@@ -17,7 +17,7 @@ steps:
 timeout: '3600s'
 availableSecrets:
   secretManager:
-  - versionName: projects/402866575973/secrets/sip_domain/versions/1"
+  - versionName: "projects/402866575973/secrets/sip_domain/versions/1"
     env: "sip_domain"
   - versionName: "projects/402866575973/secrets/CCID/versions/1"
     env: "CCID"
