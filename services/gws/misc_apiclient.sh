@@ -75,19 +75,19 @@ GAPOD=$(kubectl get po -n gauth | grep gauth-auth | grep Running | grep -v gauth
 
 echo "*** Pre-change list of clients:"
 #curl -skL https://gauth.$domain/auth/v3/ops/clients -u "$gauth_admin_username:$gauth_admin_password_plain" | jq .data[].client_id
-kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.cluster02.gcp.demo.genesys.com/auth/v3/ops/clients -u $CREDS" | jq .data[].client_id || true
+kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.$domain/auth/v3/ops/clients -u $CREDS" | jq .data[].client_id || true
 
 
 ###++++++++ Show all settings except secrets and keys, for certain api client ++
 if [ "$ACT" == "show" ]; then
     if [ "$CLN" == "all" ]; then
         echo "*** Pre-change, all existing clients:"
-        kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.cluster02.gcp.demo.genesys.com/auth/v3/ops/clients -u $CREDS" | tee RSP
+        kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.$DOMAIN/auth/v3/ops/clients -u $CREDS" | tee RSP
         [[ "$(cat RSP | jq .status.code)" != "0" ]] && echo "ERROR: Clients list not found? Failed http request to Gauth: "$(cat RSP | jq .status) && exit 1
         cat RSP | jq .data[]
     else
         echo "*** Pre-change client $CLN properties:"
-        kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.cluster02.gcp.demo.genesys.com/auth/v3/ops/clients/$CLN -u $CREDS" | tee RSP
+        kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.$DOMAIN/auth/v3/ops/clients/$CLN -u $CREDS" | tee RSP
         [[ "$(cat RSP | jq .status.code)" != "0" ]] && echo "ERROR: Client not found? Failed http request to Gauth: "$(cat RSP | jq .status) && exit 1
         cat RSP | jq .data[]
     fi
@@ -138,7 +138,7 @@ EOF
         #curl -skL -XPOST https://gauth.$domain/auth/v3/ops/clients -u $gauth_admin_username:$gauth_admin_password_plain \
         #-H 'Content-Type: application/json' -d "$(NEW_API_CLIENT)" | tee RSP
         echo "____________________Adding apiclient: $cl __________________________________"
-        kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XPOST https://gauth-int.cluster02.gcp.demo.genesys.com/auth/v3/ops/clients -u $CREDS -H 'Content-Type: application/json' -d '$(NEW_API_CLIENT $cl)'" | tee RSP
+        kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XPOST https://gauth-int.$domain/auth/v3/ops/clients -u $CREDS -H 'Content-Type: application/json' -d '$(NEW_API_CLIENT $cl)'" | tee RSP
         sleep 5
         echo;echo "________________________________________________________________________________"
     done
@@ -151,7 +151,7 @@ if [ "$ACT" == "delete" ]; then
         echo "____________________Deleting apiclient: $cl __________________________________"
         #curl -skL -XDELETE https://gauth.$domain/auth/v3/ops/clients/$CLN \
         #  -u "$gauth_admin_username:$gauth_admin_password_plain" | tee RSP
-        kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XDELETE https://gauth-int.cluster02.gcp.demo.genesys.com/auth/v3/ops/clients/$cl -u $CREDS" | tee RSP
+        kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XDELETE https://gauth-int.$domain/auth/v3/ops/clients/$cl -u $CREDS" | tee RSP
         echo;echo "________________________________________________________________________________"
     done
 fi
@@ -180,7 +180,7 @@ EOF
         echo "____________________Updating apiclient: $cl __________________________________"
         #curl -skL -XPUT https://gauth.$domain/auth/v3/ops/clients/$CLN -u "$gauth_admin_username:$gauth_admin_password_plain" \
         #  -H 'Content-Type: application/json' -d "$(NEW_REDURI)" | tee RSP
-        kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XPUT https://gauth-int.cluster02.gcp.demo.genesys.com/auth/v3/ops/clients/$cl -u $CREDS -H 'Content-Type: application/json' -d '$(NEW_REDURI)'" | tee RSP
+        kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s -XPUT https://gauth-int.$domain/auth/v3/ops/clients/$cl -u $CREDS -H 'Content-Type: application/json' -d '$(NEW_REDURI)'" | tee RSP
         echo;echo "________________________________________________________________________________"
     done
 fi
@@ -192,4 +192,4 @@ fi
 
 
 echo "*** Post-change, current list of cients:"
-kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.cluster02.gcp.demo.genesys.com/auth/v3/ops/clients -u $CREDS" | jq .data[].client_id
+kubectl exec $GAPOD --namespace="gauth" -- bash -c "curl -s https://gauth-int.$domain/auth/v3/ops/clients -u $CREDS" | jq .data[].client_id
