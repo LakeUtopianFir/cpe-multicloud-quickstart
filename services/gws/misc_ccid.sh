@@ -9,9 +9,11 @@
 
 TID=$2
 LOCATION=$3
+domain=${domain}
 
-echo $TID
-echo $LOCATION
+echo "Tenant-ID: $TID"
+echo "location: $LOCATION"
+echo "domain: $domain"
 
 #TID=$(echo $INPUT_COMMAND | awk '{print $2}')
 [[ -z "$TID" ]] && TID="100"
