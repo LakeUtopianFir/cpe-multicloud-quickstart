@@ -26,10 +26,12 @@
 TID=$2
 DMN=$3
 LOCATION=$4
+domain=$5
 
 echo $TID
 echo $DMN
 echo $LOCATION
+echo $domian
 
 #TID=$(echo $INPUT_COMMAND | awk '{print $2}')
 #DMN=$(echo $INPUT_COMMAND | awk '{print $3}')
@@ -41,10 +43,9 @@ echo $LOCATION
 gauth_admin_username=$( kubectl get secrets deployment-secrets -n gauth -o custom-columns=:data.gauth_admin_username --no-headers | base64 -d )
 
 CREDS="$gws_ops_user:$gauth_admin_password_plain"
-export domain=${domain}
 
 #echo $CREDS
-echo "Domain: $domain"
+"Domain: $domain"
 
 case "$TID" in
     100) UUID=9350e2fc-a1dd-4c65-8d40-1f75a2e080dd
