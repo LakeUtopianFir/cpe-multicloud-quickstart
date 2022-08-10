@@ -61,11 +61,11 @@ EOF
 #gauth_admin_username=$( kubectl get secrets deployment-secrets -n gauth -o custom-columns=:data.gauth_admin_username --no-headers | base64 -d )
 #gauth_admin_password_plain=$gauth_admin_username
 
-echo $gauth_admin_username
-echo $gauth_admin_password_plain
+echo "AUTH User: $gws_ops_user"
+echo "AUTH PASS: ****"
 
 ###++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-CREDS="'$gauth_admin_username:$gauth_admin_password_plain'"
+CREDS="'$gws_ops_user:$gauth_admin_password_plain'"
 [[ "$ACT" != "show" && "$ACT" != "add" && "$ACT" != "update" && "$ACT" != "delete" ]] && echo "ERROR: command must be like 'apiclient [add|update|delete] <client_id>'" && exit 1
 [[ "$CLN" == "" ]] && echo "ERROR: need client ID" && exit 1
 [[ "$CLN" != "all" ]] && CLIENTS=($CLN)
