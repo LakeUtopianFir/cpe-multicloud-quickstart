@@ -40,12 +40,12 @@ echo $domian
 [[ -z "$TID" ]] && TID="100"
 [[ -z "$LOCATION" ]] && LOCATION="/"
 
-gauth_admin_username=$( kubectl get secrets deployment-secrets -n gauth -o custom-columns=:data.gauth_admin_username --no-headers | base64 -d )
+#gauth_admin_username=$( kubectl get secrets deployment-secrets -n gauth -o custom-columns=:data.gauth_admin_username --no-headers | base64 -d )
 
 CREDS="$gws_ops_user:$gauth_admin_password_plain"
 
 #echo $CREDS
-"Domain: $domain"
+echo "Domain: $domain"
 
 case "$TID" in
     100) UUID=9350e2fc-a1dd-4c65-8d40-1f75a2e080dd
