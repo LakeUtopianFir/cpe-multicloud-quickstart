@@ -44,7 +44,7 @@ availableSecrets:
     env:  "gws_client_id"
   - versionName: "projects/402866575973/secrets/gws_client_secret/versions/1"
     env: gws_client_secret
-  - versionName: "projects/402866575973/secrets/gauth_admin_password/version/1"
+  - versionName: "projects/402866575973/secrets/gauth_admin_password/versions/1"
     env: "gws_ops_pass_encr"
   - versionName: "projects/402866575973/secrets/gauth_admin_username/version/1"
     env: "gws_ops_user"
