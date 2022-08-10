@@ -1,0 +1,15 @@
+steps:
+- id: 'Provision GCP Artifactory with Terraform'
+  name: 'us-west2-docker.pkg.dev/gts-multicloud-pe-dmitry/cloudbuild/privateedition'
+  entrypoint: 'bash'
+  args: ['platform/provision-gcp-repo.sh', 'container-privileged']
+  env:
+    - 'VGCPPROJECT=${_VGCPPROJECT}'
+    - 'VGCPREGIONPRIMARY=${_VGCPREGIONPRIMARY}'
+    - 'VGCPREPOID=${_VGCPREPOID}'
+    - 'REMOTEREPO=${_REMOTEREPO}'
+    - 'REMOTEUSER=${_REMOTEREPOUID}'
+    - 'REMOTEPASS=${_REMOTEREPOPWD}'
+    - 'REMOTEHELM=${_REMOTEHELM}'
+  timeout: '43200s'
+timeout: '43200s'

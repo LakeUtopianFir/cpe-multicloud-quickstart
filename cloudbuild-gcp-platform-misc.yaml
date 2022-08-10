@@ -1,0 +1,11 @@
+steps:
+- id: 'Provision Misc Settings for Platform Apps'
+  name: 'us-west2-docker.pkg.dev/gts-multicloud-pe-dmitry/cloudbuild/privateedition'
+  entrypoint: 'bash'
+  args: ['platform/provision-gcp-platform-misc.sh', 'container-privileged']
+  env:
+    - 'VGCPPROJECT=${_VGCPPROJECT}'
+    - 'VGKECLUSTER=${_VGKECLUSTER}'
+    - 'VGCPREGIONPRIMARY=${_VGCPREGIONPRIMARY}'
+  timeout: '7200s'
+timeout: '7200s'

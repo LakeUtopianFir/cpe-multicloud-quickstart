@@ -1,0 +1,15 @@
+steps:
+- id: 'Provision GCXI Components'
+  name: 'gcr.io/gts-multicloud-pe-dev/privateedition'
+  entrypoint: 'bash'
+  args: ['services/provision-gcxi.sh']
+  timeout: '3600s'
+  env:
+    - 'VDOMAIN=${_VDOMAIN}'
+    - 'VGCPPROJECT=${_VGCPPROJECT}'
+    - 'VGCPREGION=${_VGCPREGION}'
+    - 'VGKECLUSTER=${_VGKECLUSTER}'
+    - 'VHELMCOMMAND=${_VHELMCOMMAND}'
+    - 'VIMAGEREGISTRY=${_VIMAGEREGISTRY}'
+    - 'VARTIFACTREPO=${_VARTIFACTREPO}'
+timeout: '3600s'
