@@ -1,3 +1,14 @@
+export ARTIFACT_REPO=${ARTIFACT_REPO}
+export JFROGUSR=${JFROGUSR}
+export JFROGPASS=${JFROGPASS}
+export HELM_REGISTRY=${HELM_REGISTRY}
+
+echo "Helm Registry: $HELM_REGISTRY"
+
+helm repo add $ARTIFACT_REPO https://$HELM_REGISTRY  --username $JFROGUSR --password $JFROGPASS
+helm repo update 
+
+
 ###############################################################################
 # All secrets sould be saved in secrets: deployment-secrets
 # 								Using it! 
