@@ -1,6 +1,11 @@
-export PGUSER=$POSTGRES_USER
-export PGPASSWORD=$POSTGRES_PASSWORD
+export PGUSER=${POSTGRES_USER}
+export PGPASSWORD=${POSTGRES_PASSWORD}
+export POSTGRES_ADDR=${POSTGRES_ADDR}
+export tenant_t100_pg_db_name=${tenant_t100_pg_db_name}
+export tenant_t100_pg_db_user=${tenant_t100_pg_db_user}
+export tenant_t100_pg_db_password=${tenant_t100_pg_db_password}
 
+set -x
 
 apk add --update postgresql-client
 
@@ -14,3 +19,5 @@ if [ $? -ne 0 ]; then
     psql -h ${POSTGRES_ADDR} -c "CREATE USER $tenant_t100_pg_db_user WITH LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOREPLICATION CONNECTION LIMIT -1 PASSWORD '$tenant_t100_pg_db_password'"
     psql -h ${POSTGRES_ADDR} -c "GRANT all privileges on database \"$tenant_t100_pg_db_name\" to $tenant_t100_pg_db_user"
 fi
+
+sleep 1m 30s
