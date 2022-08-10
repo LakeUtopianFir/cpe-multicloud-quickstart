@@ -10,6 +10,21 @@ export DOMAIN=$VDOMAIN
 export IMAGE_REGISTRY=$VIMAGEREGISTRY
 export ARTIFACT_REPO=$VARTIFACTREPO
 export FULLCOMMAND=$VHELMCOMMAND
+export POSTGRES_ADDR=$POSTGRES_ADDR
+export POSTGRES_USER=$POSTGRES_USER
+export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+export tenant_t100_pg_db_name=$tenant_t100_pg_db_name
+export tenant_t100_pg_db_user=$tenant_t100_pg_db_user
+export tenant_t100_pg_db_password=$tenant_t100_pg_db_password
+export tenant_gauth_client_id=$tenant_gauth_client_id
+export tenant_gauth_client_secret=$tenant_gauth_client_secret
+export CCID=$CCID
+export sip_domain=$sip_domain
+
+
+
+
+
 
 echo "***********************"
 echo "Logging into GCP"
@@ -32,9 +47,32 @@ else
 fi
 kubectl config set-context --current --namespace=$NS
 
+
+echo "********************"
+echo "Creating Pull Secret"
+echo "********************"
+cat <<EOF | kubectl create -n $NS -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: pullsecret
+  namespace: $NS
+data:
+  .dockerconfigjson: >-
+     ${PULLSECRET}
+type: kubernetes.io/dockerconfigjson
+EOF
+
+echo "created secret: $(kubectl get secrets pullsecret -n $NS)"
+
+
 echo "***********************"
 echo "Run Helm Charts"
 echo "***********************"
+
+echo "Adding helm-staging repo..."
+helm repo add helm-staging https://pureengage.jfrog.io/artifactory/helm-staging  --username $JFROGUSR --password $JFROGPASS
+helm repo update 
 
 cd "./services/$SERVICE"
 COMMAND=$(echo $FULLCOMMAND | cut -d' ' -f1)

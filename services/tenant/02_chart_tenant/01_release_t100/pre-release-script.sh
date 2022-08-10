@@ -5,11 +5,11 @@
 # We extract secrets to environment variables. It will evaluate variables in
 # override values by workflow.
 ###############################################################################
-function get_secret {
-  # Using: get_secret secret_name
-  echo $( kubectl get secrets deployment-secrets -o custom-columns=:data.$1 \
-      --no-headers | base64 -d )
-}
+#function get_secret {
+#  # Using: get_secret secret_name
+#  echo $( kubectl get secrets deployment-secrets -o custom-columns=:data.$1 \
+#      --no-headers | base64 -d )
+#}
 
 function create_secret {
   # Using: create_secret secret_name secrete_value_name secret_value
@@ -27,20 +27,22 @@ function create_secret {
 ###############################################################################
 #             POSTGRES connection information and credentials
 ###############################################################################
-export POSTGRES_ADDR=$( get_secret POSTGRES_ADDR )
-export tenant_t100_pg_db_name=$( get_secret tenant_t100_pg_db_name )
-export tenant_t100_pg_db_user=$( get_secret tenant_t100_pg_db_user )
-export tenant_t100_pg_db_password=$( get_secret tenant_t100_pg_db_password )
+export POSTGRES_ADDR=${POSTGRES_ADDR}
+export tenant_t100_pg_db_name=${tenant_t100_pg_db_name}
+export tenant_t100_pg_db_user=${tenant_t100_pg_db_user}
+export tenant_t100_pg_db_password=${tenant_pg_db_password}
 ###############################################################################
 #             GAUTH credentials
 ###############################################################################
-export tenant_gauth_client_id=$( get_secret tenant_gauth_client_id )
-export tenant_gauth_client_secret=$( get_secret tenant_gauth_client_secret )
+export tenant_gauth_client_id=${tenant_gauth_client_id}
+export tenant_gauth_client_secret=${tenant_gauth_client_secret}
 ###############################################################################
 #       Postgres admin credentials (uses for creating tenant db)
 ###############################################################################
-export POSTGRES_USER=$( get_secret POSTGRES_USER )
-export POSTGRES_PASSWORD=$( get_secret POSTGRES_PASSWORD )
+export POSTGRES_USER=${POSTGRES_USER}
+export POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+export CCID=${CCID}
+export sip_domain=${sip_domain}
 
 ###############################################################################
 #             Secrets for voice microservices

@@ -1,5 +1,5 @@
 # Version 4 UUID
-tenantid: 9350e2fc-a1dd-4c65-8d40-1f75a2e080dd
+tenantid: $CCID
 
 serviceAccount:
     create: true
@@ -35,9 +35,9 @@ images:
 
 tenant:
   general:
-    location: USW2
-    sipDomain: t100.dev.genazure.com
-    upstreamServices: voice-sipfe:9101,voice-config:9100,ixn-server-9350e2fc-a1dd-4c65-8d40-1f75a2e080dd:7120,ixn-vqnode-9350e2fc-a1dd-4c65-8d40-1f75a2e080dd:7122"
+    location: $LOCATION
+    sipDomain: $sip_domain
+    upstreamServices: voice-sipfe:9101,voice-config:9100,ixn-server-$CCID:7120,ixn-vqnode-$CCID:7122"
   livenessProbe:
     checkInterval: 10
     startupDelay: 50

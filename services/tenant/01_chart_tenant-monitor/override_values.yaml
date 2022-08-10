@@ -20,7 +20,7 @@ fluent:
 tenant:
   logging:
     volume:
-      enabled: "true"
+      enabled: "false"
       createSC: "false"
       createpvClaim: "true"
       logClaim: "tenant-logs-pvc"
