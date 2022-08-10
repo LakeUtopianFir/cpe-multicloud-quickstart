@@ -32,10 +32,9 @@ domain=$4
 #ACT=$(echo $INPUT_COMMAND | awk '{print $2}')
 #CLN=$(echo $INPUT_COMMAND | awk '{print $3}')
 #domain=$(echo $INPUT_COMMAND | awk '{print $4}')
-
-echo $ACT
-echo $CLN
-echo $domain
+echo "Action: $ACT"
+echo "Clients: $CLN"
+echo "Domain: $domain"
 
 # Redirect URIs allowed for these clients (redirections during SSO auth)
 REDIRECT_URIS=$(cat << EOF

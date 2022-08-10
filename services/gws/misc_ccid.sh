@@ -9,7 +9,7 @@
 
 TID=$2
 LOCATION=$3
-domain=${domain}
+export domain=${domain}
 
 echo "Tenant-ID: $TID"
 echo "location: $LOCATION"
