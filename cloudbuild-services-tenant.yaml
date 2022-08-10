@@ -46,4 +46,6 @@ availableSecrets:
   - versionName: "projects/402866575973/secrets/POSTGRES_PASSWORD/versions/1"
     env:  "POSTGRES_PASSWORD"
   - versionName: "projects/402866575973/secrets/POSTGRES_USER/versions/1"
-    env:  "POSTGRES_USER"  
+    env:  "POSTGRES_USER"
+options:
+  logging: CLOUD_LOGGING_ONLY
