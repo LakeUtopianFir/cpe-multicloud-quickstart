@@ -1,5 +1,5 @@
 clusterDomain: cluster.local
-clusterName: elastic
+clusterName: gws-elastic
 
 image:
   repository: bitnami/elasticsearch
