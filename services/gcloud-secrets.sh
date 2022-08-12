@@ -23,14 +23,14 @@ gcloud container clusters get-credentials $gkeCluster --region $gcpRegion --proj
 
 #### Run gcloud commands
 echo 'running gcloud secret'
-secret1=$(gcloud secrets versions access 2 --secret="gauth-deployment-secret-gke3-2")
-echo $secret1 > deployment-secrets.yaml
-cat deployment-secrets.yaml
+secret1=$(gcloud secrets versions access 1 --secret="gauth-deployment-secret-gke3-2")
+echo $secret1 > deployment-secrets.json
+cat deployment-secrets.json
 
 echo "****************************"
 echo "creating deployment-secrets"
 echo "****************************"
-kubectl create -f deployment-secrets.yaml -n $SERVICE
+kubectl create -f deployment-secrets.json -n $SERVICE
 echo "****************************"
 echo "Validating deployemnt secrets exist"
 echo "****************************"
