@@ -1,7 +1,7 @@
 
 steps:
 - id: 'gcloud login pull secrets'
-  name: 'gcr.io/gts-multicloud-pe-dev/privateedition'
+  name: 'gcr.io/gcpe0003/privateedition'
   entrypoint: 'bash'
   args: ['services/gcloud-secrets.sh']
   env:
