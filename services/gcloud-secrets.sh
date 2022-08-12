@@ -34,5 +34,5 @@ kubectl create -f deployment-secrets.json -n $SERVICE
 echo "****************************"
 echo "Validating deployemnt secrets exist"
 echo "****************************"
-kubectl describe scecret deployment-secret -n $SERVICE
+kubectl describe secret deployment-secret -n $SERVICE
 echo "#### END #####"
