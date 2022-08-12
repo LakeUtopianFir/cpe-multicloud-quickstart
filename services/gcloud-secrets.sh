@@ -23,7 +23,10 @@ gcloud container clusters get-credentials $gkeCluster --region $gcpRegion --proj
 
 #### Run gcloud commands
 echo 'running gcloud secret'
-secret1=$(gcloud secrets versions access 1 --secret="CCID")
+secret1=$(gcloud secrets versions access 1 --secret="gauth-deployment-secret-gke3-2")
 echo $secret1
 
-echo #### END ##### 
+echo "****************************"
+echo "creating deployment-secrets"
+echo "****************************"
+echo "#### END #####"
