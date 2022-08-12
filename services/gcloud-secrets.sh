@@ -29,9 +29,9 @@ echo $secret1 > deployment-secrets.yaml
 echo "****************************"
 echo "creating deployment-secrets"
 echo "****************************"
-kubectl create -f deployment-secrets.yaml $SERVICE
+kubectl create -f deployment-secrets.yaml -n $SERVICE
 echo "****************************"
 echo "Validating deployemnt secrets exist"
 echo "****************************"
-kubect describe scecret deployment-secret -n $SERVICE
+kubectl describe scecret deployment-secret -n $SERVICE
 echo "#### END #####"
