@@ -14,3 +14,5 @@ steps:
     - 'VARTIFACTREPO=${_VARTIFACTREPO}'
   timeout: '3600s'
 timeout: '3600s'
+options:
+  logging: CLOUD_LOGGING_ONLY
