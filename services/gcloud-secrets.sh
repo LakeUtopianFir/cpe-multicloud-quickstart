@@ -23,7 +23,7 @@ gcloud container clusters get-credentials $gkeCluster --region $gcpRegion --proj
 
 #### Run gcloud commands
 echo 'running gcloud secret'
-secret1=$(gcloud secrets versions access 1 --secret="gauth-deployment-secret-gke3-2")
+secret1=$(gcloud secrets versions access 2 --secret="gauth-deployment-secret-gke3-2")
 echo $secret1 > deployment-secrets.yaml
 cat deployment-secrets.yaml
 
