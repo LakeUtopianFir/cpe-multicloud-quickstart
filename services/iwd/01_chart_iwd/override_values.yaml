@@ -1,0 +1,35 @@
+###############################################################################
+# Global IWD parameters
+# https://all.docs.genesys.com/PEC-IWD/Current/IWDPEGuide/Configure
+###############################################################################
+
+replicaCount: 1
+
+image:
+  registry: $IMAGE_REGISTRY
+  repository: nexus/iwd
+  pullSecrets:
+    - name: pullsecret
+
+gauth:
+  auth:
+    url: http://gauth-auth.gauth
+    redirectUrl: https://gauth.${DOMAIN}
+
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: "nginx"
+  hosts:
+    - host: iwd.${DOMAIN}
+      paths:
+        - path: '/iwd/'
+          port: 4024
+  tls:
+    - hosts:
+        - iwd.${DOMAIN}
+      secretName: iwd-ingress-ext
+
+nexus:
+  url: http://nexus.nexus

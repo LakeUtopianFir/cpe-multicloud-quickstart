@@ -1,0 +1,8 @@
+steps:
+- id: 'Build Private Edition Customer Builder'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/privateedition:latest', '-f', './Dockerfile', '.']
+  timeout: '3600s'
+images:
+  - 'gcr.io/$PROJECT_ID/privateedition:latest'
+timeout: '3600s'

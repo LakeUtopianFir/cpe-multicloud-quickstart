@@ -1,0 +1,40 @@
+global:
+  name: consul
+  datacenter: dc1
+  image: hashicorp/consul:1.11.3
+  imageK8S: hashicorp/consul-k8s-control-plane:0.41.0
+  tls:
+    enabled: true
+    enableAutoEncrypt: true
+    httpsOnly: false
+  acls:
+    manageSystemACLs: true
+  openshift:
+    enabled: false
+
+server:
+  replicas: 3
+  bootstrapExpect: 3
+  disruptionBudget:
+    enabled: true
+    maxUnavailable: 0
+
+client:
+  enabled: true
+  grpc: true
+
+ui:
+  enabled: true 
+
+connectInject:
+  enabled: true
+  transparentProxy:
+    defaultEnabled: false
+
+controller:
+  enabled: true
+  
+syncCatalog:
+  enabled: true
+  addK8SNamespaceSuffix: false
+

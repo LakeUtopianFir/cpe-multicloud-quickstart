@@ -1,0 +1,33 @@
+{
+    "data": {
+        "useOverride": 2,
+        "tenantDBID": 1,
+        "state": 1,
+        "switchSpecificType": 1,
+        "switchDBID": 101,
+        "number": "$number",
+        "loginFlag": 1,
+        "siteDBID": 0,
+        "contractDBID": 0,
+        "type": $type,
+        "groupDBID": 0,
+        "routeType": 1,
+        "trunks": 0,
+        "registerAll": 2,
+        "$class": "CfgDN",
+        "userProperties": [
+            {
+                "key": "htcc",
+                "type": "kvlist",
+                "value": [
+                    {
+                        "key": "name",
+                        "type": "str",
+                        "value": "$number.SIP_Cluster"
+                    }
+                ]
+            }
+        ],
+        "name": "$number"
+    }
+}

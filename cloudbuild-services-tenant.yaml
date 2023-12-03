@@ -1,0 +1,15 @@
+steps:
+- id: 'Provision Tenant Components'
+  name: 'gcr.io/$PROJECT_ID/privateedition'
+  entrypoint: 'bash'
+  args: ['services/provision-tenant.sh']
+  env:
+    - 'VDOMAIN=${_VDOMAIN}'
+    - 'VGCPPROJECT=${_VGCPPROJECT}'
+    - 'VGCPREGION=${_VGCPREGION}'
+    - 'VGKECLUSTER=${_VGKECLUSTER}'
+    - 'VHELMCOMMAND=${_VHELMCOMMAND}'
+    - 'VIMAGEREGISTRY=${_VIMAGEREGISTRY}'
+    - 'VARTIFACTREPO=${_VARTIFACTREPO}'
+    - 'VEMAILADDRESS=${_VEMAILADDRESS}'
+timeout: '3600s'

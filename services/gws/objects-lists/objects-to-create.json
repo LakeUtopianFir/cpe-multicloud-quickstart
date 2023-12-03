@@ -1,0 +1,44 @@
+[
+    {
+        "name": "skills",
+        "post_url": "configuration/objects/skills",
+        "template_file": "skills-template.json",
+        "list_file": "skills-list.json"
+    },
+    {
+        "name": "agent-groups",
+        "post_url": "configuration/objects/agent-groups",
+        "template_file": "agent-groups-template.json",
+        "list_file": "agent-groups-list.json"
+    },
+    {
+        "name": "supervisors",
+        "post_url": "users",
+        "template_file": "supervisors-create-template.json",
+        "list_file": "supervisors-list.json"
+    },
+    {
+        "name": "agents",
+        "post_url": "users",
+        "template_file": "agents-create-template.json",
+        "list_file": "agents-list.json"
+    },
+    {
+        "name": "admins",
+        "post_url": "users",
+        "template_file": "admins-create-template.json",
+        "list_file": "admins-list.json"
+    },
+    {
+        "name": "dns",
+        "post_url": "configuration/objects/dns",
+        "template_file": "dns-template.json",
+        "list_file": "dns-list.json"
+    },
+    {
+        "name": "capacity-rules",
+        "post_url": "capacity-rules",
+        "template_file": "capacity-rules-template.json",
+        "list_file": "capacity-rules-list.json"
+    }
+]

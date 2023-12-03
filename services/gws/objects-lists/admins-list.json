@@ -1,0 +1,5 @@
+[
+    {"name": "readonly", "firstName": "Henry", "lastName": "Frasers", "accessGroups": "[\\\"Administrators\\\",\\\"t100 Administrators\\\"]"},
+    {"name": "adm", "firstName": "Willy", "lastName": "Bolling", "accessGroups": "[\\\"Administrators\\\", \\\"t100 Administrators\\\"]"},
+    {"name": "sadm", "firstName": "Sarah", "lastName": "Fraser", "accessGroups": "[\\\"Super Administrators\\\"]"}
+]

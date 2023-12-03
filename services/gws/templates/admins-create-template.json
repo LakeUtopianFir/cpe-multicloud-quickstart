@@ -1,0 +1,22 @@
+{
+    "data": {
+        "firstName": "$firstName",
+        "lastName": "$lastName",
+        "userName": "$name",
+        "employeeID": "$name",
+        "emailAddress": "",
+        "changePasswordOnNextLogin": false,
+        "userProperties": {},
+        "isAgent": false,
+        "isAdmin": true,
+        "enabled": true,
+        "folder": "/",
+        "accessGroups": $accessGroups,
+        "wwe": {
+            "roles": [
+                "ROLE_ADMIN"
+            ]
+        },
+        "password": "$userPassword"
+    }
+}

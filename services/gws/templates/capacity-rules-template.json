@@ -1,0 +1,86 @@
+{
+  "data": {
+    "name": "$name",
+    "folderDbid": "$folderDbid",
+    "mediaRules": {
+      "voice": {
+        "priority": "",
+        "conjunctions": [
+          {
+            "elementaryRules": [
+              {
+                "media": "voice",
+                "capacity": $voice_capacity
+              }
+            ]
+          }
+        ]
+      },
+      "chat": {
+        "priority": "",
+        "conjunctions": [
+          {
+            "elementaryRules": [
+              {
+                "media": "chat",
+                "capacity": $chat_capacity
+              }
+            ]
+          }
+        ]
+      },
+      "email": {
+        "priority": "",
+        "conjunctions": [
+          {
+            "elementaryRules": [
+              {
+                "media": "email",
+                "capacity": $email_capacity
+              }
+            ]
+          }
+        ]
+      },
+      "workitem": {
+        "priority": "",
+        "conjunctions": [
+          {
+            "elementaryRules": [
+              {
+                "media": "workitem",
+                "capacity": $workitem_capacity
+              }
+            ]
+          }
+        ]
+      },
+      "facebook": {
+        "priority": "",
+        "conjunctions": [
+          {
+            "elementaryRules": [
+              {
+                "media": "facebook",
+                "capacity": $facebook_capacity
+              }
+            ]
+          }
+        ]
+      },
+      "twitter": {
+        "priority": "",
+        "conjunctions": [
+          {
+            "elementaryRules": [
+              {
+                "media": "twitter",
+                "capacity": $twitter_capacity
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

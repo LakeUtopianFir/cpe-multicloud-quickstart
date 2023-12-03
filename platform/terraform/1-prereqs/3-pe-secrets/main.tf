@@ -1,0 +1,98 @@
+module "pe-secrets_instance" {
+    source           = "../../../tfm/1-prereqs/3-pe-secrets/"
+    region           = "INSERT_PRIMARYREGION"
+    GAUTH_POSTGRES_PASSWORD = ""
+    GAUTH_gauth_pg_password = ""
+    VOICE_CONSUL_VOICE_TOKEN = ""
+    VOICE_POSTGRES_PASSWORD = ""
+    VOICE_REDIS_PASSWORD = ""
+    VOICE_tenant_gauth_client_secret = ""
+    VOICE_tenant_t100_pg_db_password = ""
+    GWS_gws_redis_password =""
+    GWS_gws_consul_token = ""
+    GWS_POSTGRES_PASSWORD = ""
+    GWS_gws_pg_pass = ""
+    GWS_gws_as_pg_pass = ""
+    GWS_gws_client_secret = ""
+    GWS_ws_ops_pass_encr = ""
+    UCWS_POSTGRES_PASSWORD =""
+    UCWS_ucsx_gauth_client_secret = ""
+    UCWS_ucsx_tenant_100_db_password = ""
+    TLM_TELEMETRY_AUTH_CLIENT_SECRET = ""
+    PULSE_POSTGRES_PASSWORD = ""
+    PULSE_gws_Client_Secret = ""
+    PULSE_redis_key = ""
+    NEXUS_POSTGRES_PASSWORD = ""
+    NEXUS_nexus_db_password = ""
+    NEXUS_nexus_gws_client_secret = ""
+    NEXUS_nexus_redis_password = ""
+    IXN_POSTGRES_PASSWORD = ""
+    IXN_ixn_db_password = ""
+    IXN_redis_password = ""
+    IWDEM_iwdem_redis_password = ""
+    IWDEM_iwdem_nexus_api_key = ""
+    IWDDM_POSTGRES_PASSWORD = ""
+    IWDDM_gcxi_db_password = ""
+    IWDDM_gim_db_password = ""
+    IWDDM_iwddm_db_password = ""
+    IWDDM_iwddm_nexus_api_key = ""
+    GCXI_POSTGRES_PASSWORD = ""
+    GCXI_gim_db_pass = ""
+    GCXI_iwd_db_pass = ""
+    GCXI_GAUTH_KEY = ""
+    GAUTH_pg_password = "Genesys1234"
+    GAUTH_redis_password = ""
+    GAUTH_admin_password = ""
+    GAUTH_gws_client_secret = ""
+    GAUTH_jks_keyPassword = ""
+    GAUTH_jks_keyStorePassword = ""
+    GVP_POSTGRES_PASSWORD = ""
+    GVP_cm_configserver_password = ""
+    GVP_cm_pg_db_password = ""
+    GVP_consul_token = ""
+    GVP_rs_mssql_admin_password = ""
+    GVP_rs_mssql_reader_password = ""
+    GVP_rs_mssql_db_password = ""
+    CXC_POSTGRES_PASSWORD = ""
+    CXC_redis_password = ""
+    CXC_configserver_user_password = ""
+    CXC_gws_client_secret = ""
+    CXC_prov_gwsauthpass = ""
+    CXC_prov_tenant_pass = ""
+    DESIGNER_gws_client_secret = ""
+    GES_POSTGRES_PASSWORD = ""
+    GES_AUTHENTICATION_CLIENT_SECRET = ""
+    GES_DB_PASSWORD = ""
+    GES_DEVOPS_PASSWORD = ""
+    GES_REDIS_ORS_PASSWORD = ""
+    GES_REDIS_PASSWORD = ""
+    GIM_POSTGRES_PASSWORD = ""
+    GIM_pgdb_etl_password = ""
+    GSP_SECRET_ACCESS_KEY = ""
+    IWD_POSTGRES_PASSWORD = ""
+    IWD_db_password = ""
+    IWD_redis_password = ""
+    IWD_gws_client_secret = ""
+}
+
+provider "google" {
+  project = "INSERT_PROJECTNAME"
+}
+
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "4.29.0"
+    }
+  }
+
+  required_version = ">= 1.2.0, < 1.3.0"
+}
+
+terraform {
+  backend "gcs" {
+    bucket = "INSERT_STORAGEBUCKETNAME"
+    prefix = "pe-secrets"
+  }
+}

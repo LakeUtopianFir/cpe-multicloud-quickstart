@@ -1,0 +1,15 @@
+steps:
+- id: 'Provision GCP Platform with Terraform'
+  name: 'gcr.io/$PROJECT_ID/privateedition'
+  entrypoint: 'bash'
+  args: ['platform/provision-gcp-platform.sh']
+  env:
+    - 'VDOMAIN=${_VDOMAIN}'
+    - 'VGCPPROJECT=${_VGCPPROJECT}'
+    - 'VGCPREGIONPRIMARY=${_VGCPREGIONPRIMARY}'
+    - 'VGCPREGIONSECONDARY=${_VGCPREGIONSECONDARY}'
+    - 'VGKECLUSTER=${_VGKECLUSTER}'
+    - 'VEMAILADDRESS=${_VEMAILADDRESS}'
+    - 'VSTORAGEBUCKET=${_VSTORAGEBUCKET}'
+  timeout: '7200s'
+timeout: '7200s'

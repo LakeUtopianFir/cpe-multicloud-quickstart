@@ -1,0 +1,22 @@
+{
+    "data": {
+        "deltaTenant": {
+            "DBID": 1,
+            "userProperties": [
+                {
+                    "key": "security-authentication-rules",
+                    "type": "kvlist",
+                    "value": [
+                        {
+                            "key": "password-no-repeats",
+                            "type": "str",
+                            "value": "0"
+                        }
+                    ]
+                }
+            ],
+            "$class": "CfgTenant"
+        },
+        "$class": "CfgDeltaTenant"
+    }
+}

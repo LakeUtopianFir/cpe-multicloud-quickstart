@@ -1,0 +1,12 @@
+[
+    {
+        "name": "CR-All-One-Each",
+        "folderDbid": "114",
+        "voice_capacity": 1,
+        "chat_capacity": 1,
+        "email_capacity": 1,
+        "workitem_capacity": 1,
+        "facebook_capacity": 1,
+        "twitter_capacity": 1
+    }
+]

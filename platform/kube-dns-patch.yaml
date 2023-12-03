@@ -1,0 +1,3 @@
+data:
+  stubDomains: |
+    {"consul": ["INSERT_CONSULDNS"]}

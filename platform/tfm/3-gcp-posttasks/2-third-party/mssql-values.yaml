@@ -1,0 +1,19 @@
+image:
+  repository: mcr.microsoft.com/mssql/server
+  tag: 2019-latest
+
+acceptEula:
+  value: "y"
+
+sapassword: "Genesys1234"
+
+edition:
+  value: "Developer"
+
+persistence:
+  enabled: true
+  storageClass: "standard"
+  dataAccessMode: ReadWriteOnce
+  dataSize: 200Gi
+  logAccessMode: ReadWriteOnce
+  logSize: 200Gi

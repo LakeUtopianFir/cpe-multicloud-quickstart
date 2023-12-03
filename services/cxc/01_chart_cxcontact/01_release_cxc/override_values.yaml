@@ -1,0 +1,25 @@
+###############################################################################
+# Additional CX Concact parameters
+# https://all.docs.genesys.com/PEC-OU/Current/CXCPEGuide/Configure
+###############################################################################
+
+cxc-amark-app:          100.0.030.0004.9415
+cxc-amark-ui:           100.0.030.0004.8968
+cxc-campaign-manager:   100.0.030.0004.4052
+cxc-compliance:         100.0.030.0004.4147
+cxc-dial-manager:       100.0.030.0004.1324
+cxc-job-scheduler:      100.0.030.0004.2948
+cxc-list-builder:       100.0.030.0004.4996
+cxc-list-manager:       100.0.030.0004.4083
+
+
+configserver:
+  user_name: cxc_configserver_user_name
+  user_password: cxc_configserver_user_password
+
+redis:
+  password: cxc_redis_password
+
+gws:
+  client_id: cxc_gws_client_id
+  client_secret: cxc_gws_client_secret

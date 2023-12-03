@@ -1,0 +1,52 @@
+{
+    "data": {
+        "firstName": "$firstName",
+        "lastName": "$lastName",
+        "userName": "$name",
+        "employeeID": "$name",
+        "emailAddress": "",
+        "changePasswordOnNextLogin": false,
+        "isAgent": true,
+        "isAdmin": false,
+        "skills": [
+            {
+                "name": "Lang-English",
+                "state": "1",
+                "folder": "/",
+                "dataItem": {
+                    "name": "Lang-English"
+                },
+                "label": "Lang-English",
+                "isChecked": true,
+                "level": 10
+            }
+        ],
+        "userProperties": {},
+        "wrapUpTime": "",
+        "voiceMail": "",
+        "loginCode": "",
+        "enabled": true,
+        "folder": "/",
+        "wwe": {
+            "roles": [
+                "ROLE_AGENT"
+            ],
+            "deletedRoles": []
+        },
+        "agentGroups": [
+            "$agentGroup"
+        ],
+        "accessGroups": $accessGroups,
+        "password": "$userPassword",
+        "supportSoftPhone": true,
+        "sipPhoneType": "GENESYS_SOFTPHONE_WEBRTC",
+        "phones": [
+            {
+                "number": "$number",
+                "description": "WebRTC",
+                "isDefault": true,
+                "placeName": "$name"
+            }
+        ]
+    }
+}

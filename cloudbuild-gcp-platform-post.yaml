@@ -1,0 +1,16 @@
+steps:
+- id: 'Perform Post Tasks and Setup on GCP Platform'
+  name: 'gcr.io/$PROJECT_ID/privateedition'
+  entrypoint: 'bash'
+  args: ['platform/provision-gcp-platform-post.sh']
+  env:
+    - 'VDOMAIN=${_VDOMAIN}'
+    - 'VGCPPROJECT=${_VGCPPROJECT}'
+    - 'VGCPREGIONPRIMARY=${_VGCPREGIONPRIMARY}'
+    - 'VGCPREGIONSECONDARY=${_VGCPREGIONSECONDARY}'
+    - 'VGKECLUSTER=${_VGKECLUSTER}'
+    - 'VEMAILADDRESS=${_VEMAILADDRESS}'
+    - 'VSTORAGEBUCKET=${_VSTORAGEBUCKET}'
+    - 'VGSPSTORAGEBUCKET=${_VGSPSTORAGEBUCKET}'
+  timeout: '7200s'
+timeout: '7200s'

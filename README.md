@@ -1,100 +1,23 @@
-# Genesys Multicloud CX private edition - Platform samples
+# Genesys Multicloud CX Private Edition - Quickstart on GCP
 
-The purpose of this repository is to provide pretested sample platform reference architectures for deploying Genesys Multicloud CX private edition containers and Helm charts to Kubernetes clusters for Demos, Labs or Proof of Concepts.  The content provided in this repository can not be used for QA or Production environments as it is not designed to meet typical HA, DR, multi-region or Security requirements.  All content is being provided AS-IS without any SLA, warranty or coverage via Genesys product support.
+The purpose of this repository is to provide sample platform reference architecture for deploying Genesys Multicloud CX Private Edition containers and Helm charts to Google Kubernetes Engine (GKE). The content provided in this repository SHOULD NOT be used directly for Production environments as it is not designed to meet typical HA, DR, service sizing, multi-region or Security requirements. All content is being provided AS-IS without any SLA, warranty or coverage via Genesys product support.
 
-This repository contains sample Infrastructure as Code using Terraform for:
+This project is derived from the following two repositories maintained by the Genesys Product Teams:
+* [MultiCloud Platform](https://github.com/genesys/multicloud-platform)
+* [MultiCloud Services](https://github.com/genesys/multicloud-services)
 
-* [GKE on Google Cloud](/gcp-gke)
-* [Azure Red Hat OpenShift](/azure-openshift)
+## Architecture
 
-## Repository Structure
+![Quickstart - User Diagram](diagrams/Quickstart-on-GCP-Quickstart-User.png)
 
-<pre>
-multicloud-platform
-|
-├── .github
-│   └── ISSUE_TEMPLATE
-│       ├── bug-report.md
-│       ├── documentation-issue.md
-│       └── feature-request.md
-|
-├── doc
-│   ├── CONTRIBUTE.md
-│   └── STYLE.md
-|
-├── azure-openshift
-│   ├── tfm
-│   │   ├── [terraform_modules]  -  like "0-remotestate", "1-network", ...
-│   |   |   ├── *.tf
-│   |   |   └── USAGE.md  -  Output from tfdocs w/ details on all inputs
-│   |   └── README.md  -  Overview of each module and order of execution
-│   ├── terraform
-│   │   ├── [region]  -  like "westus2" w/o project name
-│   │   |   ├── [terraform_steps]  -  like "0-remotestate", "1-network", ...
-│   |   |   |   ├── main.tf
-│   |   |   |   ├── variables.tf
-│   |   |   |   ├── [helm_chart].tf - if deploying Helm charts, then the value overrides per chart
-│   |   |   |   └── USAGE.md  -  Details on all inputs that must be modified
-│   |   |   └── README.md  -  Details on all inputs that must be modified
-│   |   └── README.md  -  Overview of each module and order of execution for global and one or more regions
-│   └── README.md  -  Overview of platform architecture, prerequisites and usage
-|
-├── gcp-gke
-│   ├── tfm
-│   │   ├── [terraform_modules]  -  like "0-remotestate", "1-network", ...
-│   |   |   ├── *.tf
-│   |   |   └── USAGE.md  -  Output from tfdocs w/ details on all inputs
-│   |   └── README.md  -  Overview of each module and order of execution
-│   ├── terraform
-│   │   ├── [region]  -  like "uswest1" w/o project name
-│   │   |   ├── [terraform_steps]  -  like "0-remotestate", "1-network", ...
-│   |   |   |   ├── main.tf
-│   |   |   |   ├── variables.tf
-│   |   |   |   ├── [helm_chart].tf - if deploying Helm charts, then the value overrides per chart
-│   |   |   |   └── USAGE.md  -  Details on all inputs that must be modified
-│   |   |   └── README.md  -  Details on all inputs that must be modified
-│   |   └── README.md  -  Overview of each module and order of execution for global and one or more regions
-│   └── README.md  -  Overview of platform architecture, prerequisites and usage
-|
-└── Other platforms - Future/TBD
-</pre>
+![Quickstart - GCP Diagram](diagrams/Quickstart-on-GCP.png)
 
-## Related Sites
+## Getting Started with Quickstart
+The scripts provided in this repository assumes a newly created and dedicated GCP project for MultiCloud Private Edition is created. The Terraform files will provision the newly created Google Project with the necessary Google API's and services (GKE, etc) and prepare the project and GKE cluster for MultiCloud Private Edition. Once the GKE cluster is stood up, then the provided Helm Charts will execute one by one to stand up the MultiCloud Private Edition services (GAuth, Voice, WWE, IWD, etc).
 
-All service and product documentation can be found at [docs.genesys.com](https://docs.genesys.com)
+Cloud Build is a serverless CI/CD platform provided by GCP and has been chosen to execute the provided Terraform files and Helm Charts. In one of the first steps, a Terraform job will create and stage the Cloud Build triggers and once these are created, then the rest of the platform can be setup in an automated fasion.
 
-For installing Genesys products and services, please checkout [Genesys Multicloud Services repository](https://github.com/genesys/multicloud-services)
-
-## Issues
-
-Find known issues and resolved ones in our [GitHub Issues tracker](https://github.com/genesys/multicloud-platform/issues)
-
-## Roadmap
-
-Upcoming features and accepted issues will be tracked in our [GitHub Project](https://github.com/genesys/multicloud-platform/projects/1)
-
-## FAQ
-
-Find solutions to common problems in our [GitHub Wiki](https://github.com/genesys/multicloud-platform/wiki)
-
-### Here is a sample issue someone had
-
-  Cause: This is the root cause to the issue.
-
-  Solution: Here is how you'd fix this issue.
-
-## Contributing
-
-We are excited to work alongside our community.
-
-**BEFORE you begin work**, please read & follow our [Contribution Guidelines](/doc/CONTRIBUTE.md) to help avoid duplicate effort.
-
-## Communicating with the Team
-
-The easiest way to communicate with the team is via [GitHub Issues](https://github.com/genesys/multicloud-platform/issues/new/choose)
-
-Please file new issues, feature requests and suggestions, but **please search for similar open/closed pre-existing issues before creating a new issue.**
+To keep this initial ReadMe short and not cluttered, a dedicated "Manual" folder has been created and is broken down into a few ReadMe's that will guide you through provisioning GCP and the MultiCloud Private Edition stack. Please navigate to [0-GettingStarted](manual/0-GettingStarted.md) to get started!
 
 ## License
-
 All content in this repository is released under the [MIT License](LICENSE)

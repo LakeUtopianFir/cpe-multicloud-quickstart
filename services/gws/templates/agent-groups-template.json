@@ -1,0 +1,24 @@
+{
+    "data": {
+        "groupInfo": {
+            "state": 1,
+            "name": "$name",
+            "tenantDBID": 1,
+            "$class": "CfgGroup",
+            "userProperties": [
+                {
+                    "key": "TServer",
+                    "type": "kvlist",
+                    "value": [
+                        {
+                            "key": "gvm_mailbox",
+                            "type": "str",
+                            "value": "2022"
+                        }
+                    ]
+                }
+            ]
+        },
+        "$class": "CfgAgentGroup"
+    }
+}

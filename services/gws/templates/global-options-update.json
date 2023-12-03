@@ -1,0 +1,25 @@
+{
+    "data": {
+        "newOptions": {
+            "interaction-workspace": {
+                "privilege.webrtc.can-use": "true",
+                "privilege.webrtc.can-change-speaker-volume": "true",
+                "privilege.webrtc.can-mute-microphone": "true",
+                "privilege.webrtc.can-mute-speaker": "true",
+                "openmedia.workitem-channels": "workitem",
+                "privilege.facebook.can-use": "true",
+                "privilege.twitter.can-use": "true",
+                "privilege.workitem-channels.can-use": "true",
+                
+                "expression.gws-url.capturing-groups": "https://gws(.[A-Za-z0-9-]+)?.([A-Za-z0-9-]+)?.([A-Za-z0-9.]+)",
+                "privilege.voice.can-forward": "true",
+                "privilege.voice.can-reject-call": "true",
+                "privilege.voicemail.can-use": "false",
+                "system.telemetry.enable-traces": "true",
+                "privilege.chat.can-use": "true",
+                "privilege.email.can-use": "true",
+                "privilege.outbound.can-use": "true"
+            }
+        }
+    }
+}
